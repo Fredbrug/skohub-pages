@@ -1,0 +1,111 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix efsr: <https://fredbrug.github.io/skohub-pages/emerging-food-safety/> .
+
+# Concept scheme
+efsr:scheme a skos:ConceptScheme ;
+    dcterms:title "Early Signals for Emerging Food Safety Risks"@en ;
+    dcterms:description "A SKOS vocabulary for food safety concepts, early-signal identification, historical analysis, and historical food safety cases."@en ;
+    dcterms:created "2026-10-20"^^xsd:date ;
+    skos:hasTopConcept efsr:food-safety,
+        efsr:emerging-risk-identification,
+        efsr:historical-case-analysis,
+        efsr:historical-food-safety-case .
+
+# Collections
+efsr:core-food-safety-concepts a skos:Collection ;
+    skos:prefLabel "Core food safety concepts"@en ;
+    skos:definition "Concepts describing food safety hazards, risks, incidents, exposures, and adverse health effects."@en ;
+    skos:member efsr:food-safety, efsr:food-safety-hazard,
+        efsr:emerging-food-safety-hazard, efsr:food-safety-risk,
+        efsr:emerging-food-safety-risk, efsr:known-hazard,
+        efsr:unknown-hazard, efsr:food-safety-incident,
+        efsr:food-contamination, efsr:hazardous-substance,
+        efsr:food-chain-entity, efsr:adverse-health-effect .
+
+efsr:early-signal-identification-concepts a skos:Collection ;
+    skos:prefLabel "Early-signal and identification concepts"@en ;
+    skos:definition "Concepts describing signals, information novelty, uncertainty, detection, and proactive identification of emerging food safety risks."@en ;
+    skos:member efsr:emerging-risk-identification, efsr:early-signal,
+        efsr:indirect-early-signal, efsr:direct-early-signal,
+        efsr:consecutive-event, efsr:first-public-announcement,
+        efsr:early-identification-time-window, efsr:signal-novelty,
+        efsr:signal-uncertainty, efsr:early-signal-detection,
+        efsr:horizon-scanning, efsr:scenario-development,
+        efsr:information-extraction, efsr:proactive-risk-management .
+
+efsr:historical-analysis-concepts a skos:Collection ;
+    skos:prefLabel "Historical analysis concepts"@en ;
+    skos:definition "Concepts used to reconstruct and compare the development of historical food safety incidents."@en ;
+    skos:member efsr:historical-case-analysis, efsr:case-timeline,
+        efsr:case-event, efsr:case-reconstruction,
+        efsr:retrospective-multi-case-analysis, efsr:recurring-hazard,
+        efsr:one-off-incident, efsr:forgotten-hazard .
+
+efsr:historical-food-safety-cases a skos:Collection ;
+    skos:prefLabel "Historical food safety cases"@en ;
+    skos:definition "Historical cases examined for early signals preceding public recognition of food safety incidents."@en ;
+    skos:member efsr:case-3-mcpd-soy-sauce,
+        efsr:case-acrylamide-fried-food, efsr:case-benzene-soft-drinks,
+        efsr:case-bpa-canned-food, efsr:case-bse-cow-meat,
+        efsr:case-cronobacter-infant-formula, efsr:case-dioxin-cow-milk,
+        efsr:case-furan-food, efsr:case-itx-infant-formula,
+        efsr:case-melamine-infant-milk, efsr:case-pfos-pfoa-water,
+        efsr:case-semicarbazide-food, efsr:case-sudan-i-chilli .
+
+# Core food safety concepts
+efsr:food-safety a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety"@en ; skos:definition "The protection of human or animal health against biological, chemical or physical agents in food that can cause adverse health effects."@en ; skos:narrower efsr:food-safety-hazard, efsr:food-safety-risk, efsr:food-safety-incident ; skos:topConceptOf efsr:scheme .
+efsr:food-safety-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety hazard"@en ; skos:altLabel "Food hazard"@en ; skos:definition "A biological, chemical or physical agent in food, or a condition of food, with the potential to cause an adverse health effect."@en ; skos:broader efsr:food-safety ; skos:narrower efsr:emerging-food-safety-hazard, efsr:known-hazard, efsr:unknown-hazard .
+efsr:emerging-food-safety-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Emerging food safety hazard"@en ; skos:altLabel "Emerging hazard"@en ; skos:definition "A newly identified or changing hazard for which developing information may indicate a future food safety risk."@en ; skos:broader efsr:food-safety-hazard ; skos:related efsr:early-signal, efsr:emerging-food-safety-risk .
+efsr:food-safety-risk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety risk"@en ; skos:definition "A function of the probability and severity of an adverse health effect resulting from a hazard in food."@en ; skos:broader efsr:food-safety ; skos:narrower efsr:emerging-food-safety-risk .
+efsr:emerging-food-safety-risk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Emerging food safety risk"@en ; skos:altLabel "Emerging risk"@en ; skos:definition "A risk resulting from a newly identified hazard involving potentially significant exposure, or from a known hazard involving an unexpected new or increased exposure."@en ; skos:broader efsr:food-safety-risk ; skos:related efsr:early-signal, efsr:emerging-food-safety-hazard .
+efsr:known-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Known food safety hazard"@en ; skos:altLabel "Established hazard"@en ; skos:definition "A hazard already recognized in existing food safety knowledge or risk analysis."@en ; skos:broader efsr:food-safety-hazard .
+efsr:unknown-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Previously unknown hazard"@en ; skos:altLabel "New hazard"@en, "Unexpected hazard"@en ; skos:definition "A hazardous substance, organism or condition not previously recognized as a food safety hazard."@en ; skos:broader efsr:food-safety-hazard .
+efsr:food-safety-incident a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety incident"@en ; skos:definition "An occurrence in which a food product is associated with an actual or potential threat to health."@en ; skos:broader efsr:food-safety ; skos:narrower efsr:food-contamination .
+efsr:food-contamination a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food contamination"@en ; skos:definition "The presence or introduction of a potentially harmful biological, chemical or physical agent in food."@en ; skos:broader efsr:food-safety-incident .
+efsr:hazardous-substance a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Hazardous substance"@en ; skos:altLabel "Hazardous agent"@en ; skos:definition "A biological, chemical or physical agent capable of causing an adverse health effect."@en .
+efsr:food-chain-entity a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food-chain entity"@en ; skos:altLabel "Food product"@en, "Food material"@en ; skos:definition "A product, process, raw material, ingredient, additive, processing aid, contact material or feed used in food production."@en .
+efsr:adverse-health-effect a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Adverse health effect"@en ; skos:altLabel "Negative health effect"@en ; skos:definition "An undesirable sign, symptom, disease or pathological finding in humans or animals associated with exposure to a hazard."@en .
+
+# Early-signal and identification concepts
+efsr:emerging-risk-identification a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Emerging risk identification"@en ; skos:definition "The systematic identification and evaluation of information that may indicate a new or changing food safety hazard or risk."@en ; skos:narrower efsr:early-signal, efsr:early-signal-detection, efsr:horizon-scanning, efsr:scenario-development, efsr:information-extraction ; skos:related efsr:proactive-risk-management ; skos:topConceptOf efsr:scheme .
+efsr:early-signal a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early signal"@en ; skos:altLabel "Early warning signal"@en, "Precursor signal"@en ; skos:definition "Documented information that precedes public recognition of a food safety incident and may indicate the development of a food safety hazard or risk."@en ; skos:broader efsr:emerging-risk-identification ; skos:narrower efsr:indirect-early-signal, efsr:direct-early-signal ; skos:related efsr:historical-food-safety-case .
+efsr:indirect-early-signal a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Indirect early signal"@en ; skos:altLabel "Possible hazard link"@en ; skos:definition "The earliest documented indication of a possible indirect relationship between a hazard and the food product involved in a later incident."@en ; skos:broader efsr:early-signal .
+efsr:direct-early-signal a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Direct early signal"@en ; skos:altLabel "First direct link"@en ; skos:definition "The first written evidence of a direct relationship between a hazard and a food product before general public announcement."@en ; skos:broader efsr:early-signal .
+efsr:consecutive-event a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Consecutive event"@en ; skos:altLabel "Intermediate event"@en ; skos:definition "An event occurring between the first direct link of a hazard to food and the first public announcement."@en ; skos:related efsr:direct-early-signal, efsr:first-public-announcement .
+efsr:first-public-announcement a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "First public announcement"@en ; skos:altLabel "Initial public notification"@en, "Public warning"@en ; skos:definition "The first communication to the general public concerning the relationship between a hazard and a food product."@en .
+efsr:early-identification-time-window a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early identification time window"@en ; skos:altLabel "Intervention window"@en ; skos:definition "The period between the first detectable early signal and the first public announcement of a food safety incident."@en .
+efsr:signal-novelty a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Signal novelty"@en ; skos:altLabel "Information novelty"@en ; skos:definition "The newness of information, knowledge, insight or a relationship that may indicate an emerging food safety hazard."@en .
+efsr:signal-uncertainty a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early-signal uncertainty"@en ; skos:altLabel "Scientific uncertainty"@en ; skos:definition "Uncertainty resulting from limited, incomplete or inconclusive evidence associated with an early signal."@en .
+efsr:early-signal-detection a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early signal detection"@en ; skos:definition "The identification of information that may precede and indicate an emerging food safety hazard or risk."@en ; skos:broader efsr:emerging-risk-identification .
+efsr:horizon-scanning a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Horizon scanning"@en ; skos:definition "Systematic examination of information for developments that may become relevant to future food safety."@en ; skos:broader efsr:emerging-risk-identification .
+efsr:scenario-development a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Scenario development"@en ; skos:definition "Development of plausible pathways by which an identified hazard may evolve into a food safety risk or incident."@en ; skos:broader efsr:emerging-risk-identification .
+efsr:information-extraction a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Information extraction"@en ; skos:definition "Extraction of relevant concepts and relationships from textual data sources."@en ; skos:broader efsr:emerging-risk-identification .
+efsr:proactive-risk-management a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Proactive risk management"@en ; skos:definition "Initiation of measures before a potential food safety risk develops into an incident."@en ; skos:related efsr:emerging-risk-identification .
+
+# Historical analysis concepts
+efsr:historical-case-analysis a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical case analysis"@en ; skos:altLabel "Retrospective case analysis"@en ; skos:definition "The retrospective reconstruction and evaluation of events preceding a food safety incident."@en ; skos:narrower efsr:case-timeline, efsr:case-event, efsr:case-reconstruction, efsr:retrospective-multi-case-analysis ; skos:topConceptOf efsr:scheme .
+efsr:case-timeline a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical case timeline"@en ; skos:altLabel "Incident timeline"@en ; skos:definition "A chronological representation of early signals, consecutive events and public announcements associated with a food safety case."@en ; skos:broader efsr:historical-case-analysis .
+efsr:case-event a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical case event"@en ; skos:definition "A documented occurrence forming part of the development of a historical food safety case."@en ; skos:broader efsr:historical-case-analysis .
+efsr:case-reconstruction a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Case reconstruction"@en ; skos:definition "The process of identifying and ordering documents and events that describe the development of a historical food safety incident."@en ; skos:broader efsr:historical-case-analysis .
+efsr:retrospective-multi-case-analysis a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Retrospective multi-case analysis"@en ; skos:definition "An analysis of multiple past incidents intended to identify common characteristics, patterns and lessons."@en ; skos:broader efsr:historical-case-analysis .
+efsr:recurring-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Recurring food safety hazard"@en ; skos:altLabel "Re-emerging hazard"@en ; skos:definition "A known hazard that reappears over time, possibly through a new source, process or exposure route."@en ; skos:broader efsr:known-hazard .
+efsr:one-off-incident a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Apparently unique food safety incident"@en ; skos:altLabel "One-off incident"@en ; skos:definition "An incident initially considered unusual, unique or difficult to predict."@en ; skos:broader efsr:food-safety-incident .
+efsr:forgotten-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Forgotten hazard"@en ; skos:definition "A previously documented hazard that is no longer actively recognized and may appear new when it re-emerges."@en ; skos:broader efsr:known-hazard .
+
+# Historical food safety case concepts
+efsr:historical-food-safety-case a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical food safety case"@en ; skos:altLabel "Past food safety case"@en ; skos:definition "A past food safety incident or hazard development studied retrospectively to identify early signals, event sequences and lessons for future risk identification."@en ; skos:narrower efsr:case-3-mcpd-soy-sauce, efsr:case-acrylamide-fried-food, efsr:case-benzene-soft-drinks, efsr:case-bpa-canned-food, efsr:case-bse-cow-meat, efsr:case-cronobacter-infant-formula, efsr:case-dioxin-cow-milk, efsr:case-furan-food, efsr:case-itx-infant-formula, efsr:case-melamine-infant-milk, efsr:case-pfos-pfoa-water, efsr:case-semicarbazide-food, efsr:case-sudan-i-chilli ; skos:topConceptOf efsr:scheme .
+efsr:case-3-mcpd-soy-sauce a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "3-MCPD in soy sauce case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-acrylamide-fried-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Acrylamide in fried food case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-benzene-soft-drinks a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Benzene in soft drinks case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-bpa-canned-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Bisphenol A in canned food case"@en ; skos:altLabel "BPA in canned food case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-bse-cow-meat a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "BSE in cow meat case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-cronobacter-infant-formula a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Cronobacter sakazakii in infant formula case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-dioxin-cow-milk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Dioxin via clay in cow milk case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-furan-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Furan in thermally processed food case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-itx-infant-formula a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "ITX in infant formula case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-melamine-infant-milk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Melamine in infant milk powder case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-pfos-pfoa-water a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "PFOS/PFOA in drinking water case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-semicarbazide-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Semicarbazide in packaged food case"@en ; skos:broader efsr:historical-food-safety-case .
+efsr:case-sudan-i-chilli a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Sudan I in chilli products case"@en ; skos:broader efsr:historical-food-safety-case .
