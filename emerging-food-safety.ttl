@@ -1,111 +1,445 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix efsr: <https://fredbrug.github.io/skohub-pages/emerging-food-safety/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix efs: <https://fredbrug.github.io/skohub-pages/emerging-food-safety/> .
 
-# Concept scheme
-efsr:scheme a skos:ConceptScheme ;
-    dcterms:title "Early Signals for Emerging Food Safety Risks"@en ;
-    dcterms:description "A SKOS vocabulary for food safety concepts, early-signal identification, historical analysis, and historical food safety cases."@en ;
-    dcterms:created "2026-10-20"^^xsd:date ;
-    skos:hasTopConcept efsr:food-safety,
-        efsr:emerging-risk-identification,
-        efsr:historical-case-analysis,
-        efsr:historical-food-safety-case .
+# Emerging Food Safety vocabulary
+# Converted from the uploaded OWL class hierarchy to SKOS for SkoHub publication.
 
-# Collections
-efsr:core-food-safety-concepts a skos:Collection ;
-    skos:prefLabel "Core food safety concepts"@en ;
-    skos:definition "Concepts describing food safety hazards, risks, incidents, exposures, and adverse health effects."@en ;
-    skos:member efsr:food-safety, efsr:food-safety-hazard,
-        efsr:emerging-food-safety-hazard, efsr:food-safety-risk,
-        efsr:emerging-food-safety-risk, efsr:known-hazard,
-        efsr:unknown-hazard, efsr:food-safety-incident,
-        efsr:food-contamination, efsr:hazardous-substance,
-        efsr:food-chain-entity, efsr:adverse-health-effect .
+efs:scheme a skos:ConceptScheme ;
+    skos:prefLabel "Emerging Food Safety"@en ;
+    dct:title "Emerging Food Safety"@en ;
+    dct:description "Controlled vocabulary for emerging food safety concepts."@en ;
+    skos:hasTopConcept efs:Geography, efs:Novelty, efs:Food, efs:Substance, efs:SupportiveClasses, efs:Effect .
 
-efsr:early-signal-identification-concepts a skos:Collection ;
-    skos:prefLabel "Early-signal and identification concepts"@en ;
-    skos:definition "Concepts describing signals, information novelty, uncertainty, detection, and proactive identification of emerging food safety risks."@en ;
-    skos:member efsr:emerging-risk-identification, efsr:early-signal,
-        efsr:indirect-early-signal, efsr:direct-early-signal,
-        efsr:consecutive-event, efsr:first-public-announcement,
-        efsr:early-identification-time-window, efsr:signal-novelty,
-        efsr:signal-uncertainty, efsr:early-signal-detection,
-        efsr:horizon-scanning, efsr:scenario-development,
-        efsr:information-extraction, efsr:proactive-risk-management .
+efs:AdverseEffects a skos:Concept ;
+    skos:prefLabel "Adverse Effects"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
 
-efsr:historical-analysis-concepts a skos:Collection ;
-    skos:prefLabel "Historical analysis concepts"@en ;
-    skos:definition "Concepts used to reconstruct and compare the development of historical food safety incidents."@en ;
-    skos:member efsr:historical-case-analysis, efsr:case-timeline,
-        efsr:case-event, efsr:case-reconstruction,
-        efsr:retrospective-multi-case-analysis, efsr:recurring-hazard,
-        efsr:one-off-incident, efsr:forgotten-hazard .
+efs:AdverseEffectsMeddra a skos:Concept ;
+    skos:prefLabel "Adverse Effects Meddra"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
 
-efsr:historical-food-safety-cases a skos:Collection ;
-    skos:prefLabel "Historical food safety cases"@en ;
-    skos:definition "Historical cases examined for early signals preceding public recognition of food safety incidents."@en ;
-    skos:member efsr:case-3-mcpd-soy-sauce,
-        efsr:case-acrylamide-fried-food, efsr:case-benzene-soft-drinks,
-        efsr:case-bpa-canned-food, efsr:case-bse-cow-meat,
-        efsr:case-cronobacter-infant-formula, efsr:case-dioxin-cow-milk,
-        efsr:case-furan-food, efsr:case-itx-infant-formula,
-        efsr:case-melamine-infant-milk, efsr:case-pfos-pfoa-water,
-        efsr:case-semicarbazide-food, efsr:case-sudan-i-chilli .
+efs:AdverseEffectsOae a skos:Concept ;
+    skos:prefLabel "Adverse Effects Oae"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
 
-# Core food safety concepts
-efsr:food-safety a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety"@en ; skos:definition "The protection of human or animal health against biological, chemical or physical agents in food that can cause adverse health effects."@en ; skos:narrower efsr:food-safety-hazard, efsr:food-safety-risk, efsr:food-safety-incident ; skos:topConceptOf efsr:scheme .
-efsr:food-safety-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety hazard"@en ; skos:altLabel "Food hazard"@en ; skos:definition "A biological, chemical or physical agent in food, or a condition of food, with the potential to cause an adverse health effect."@en ; skos:broader efsr:food-safety ; skos:narrower efsr:emerging-food-safety-hazard, efsr:known-hazard, efsr:unknown-hazard .
-efsr:emerging-food-safety-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Emerging food safety hazard"@en ; skos:altLabel "Emerging hazard"@en ; skos:definition "A newly identified or changing hazard for which developing information may indicate a future food safety risk."@en ; skos:broader efsr:food-safety-hazard ; skos:related efsr:early-signal, efsr:emerging-food-safety-risk .
-efsr:food-safety-risk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety risk"@en ; skos:definition "A function of the probability and severity of an adverse health effect resulting from a hazard in food."@en ; skos:broader efsr:food-safety ; skos:narrower efsr:emerging-food-safety-risk .
-efsr:emerging-food-safety-risk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Emerging food safety risk"@en ; skos:altLabel "Emerging risk"@en ; skos:definition "A risk resulting from a newly identified hazard involving potentially significant exposure, or from a known hazard involving an unexpected new or increased exposure."@en ; skos:broader efsr:food-safety-risk ; skos:related efsr:early-signal, efsr:emerging-food-safety-hazard .
-efsr:known-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Known food safety hazard"@en ; skos:altLabel "Established hazard"@en ; skos:definition "A hazard already recognized in existing food safety knowledge or risk analysis."@en ; skos:broader efsr:food-safety-hazard .
-efsr:unknown-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Previously unknown hazard"@en ; skos:altLabel "New hazard"@en, "Unexpected hazard"@en ; skos:definition "A hazardous substance, organism or condition not previously recognized as a food safety hazard."@en ; skos:broader efsr:food-safety-hazard .
-efsr:food-safety-incident a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food safety incident"@en ; skos:definition "An occurrence in which a food product is associated with an actual or potential threat to health."@en ; skos:broader efsr:food-safety ; skos:narrower efsr:food-contamination .
-efsr:food-contamination a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food contamination"@en ; skos:definition "The presence or introduction of a potentially harmful biological, chemical or physical agent in food."@en ; skos:broader efsr:food-safety-incident .
-efsr:hazardous-substance a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Hazardous substance"@en ; skos:altLabel "Hazardous agent"@en ; skos:definition "A biological, chemical or physical agent capable of causing an adverse health effect."@en .
-efsr:food-chain-entity a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Food-chain entity"@en ; skos:altLabel "Food product"@en, "Food material"@en ; skos:definition "A product, process, raw material, ingredient, additive, processing aid, contact material or feed used in food production."@en .
-efsr:adverse-health-effect a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Adverse health effect"@en ; skos:altLabel "Negative health effect"@en ; skos:definition "An undesirable sign, symptom, disease or pathological finding in humans or animals associated with exposure to a hazard."@en .
+efs:Bacteria_Pathogens a skos:Concept ;
+    skos:prefLabel "Bacteria Pathogens"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Micro-organisms ;
+    skos:broaderTransitive efs:Micro-organisms .
 
-# Early-signal and identification concepts
-efsr:emerging-risk-identification a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Emerging risk identification"@en ; skos:definition "The systematic identification and evaluation of information that may indicate a new or changing food safety hazard or risk."@en ; skos:narrower efsr:early-signal, efsr:early-signal-detection, efsr:horizon-scanning, efsr:scenario-development, efsr:information-extraction ; skos:related efsr:proactive-risk-management ; skos:topConceptOf efsr:scheme .
-efsr:early-signal a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early signal"@en ; skos:altLabel "Early warning signal"@en, "Precursor signal"@en ; skos:definition "Documented information that precedes public recognition of a food safety incident and may indicate the development of a food safety hazard or risk."@en ; skos:broader efsr:emerging-risk-identification ; skos:narrower efsr:indirect-early-signal, efsr:direct-early-signal ; skos:related efsr:historical-food-safety-case .
-efsr:indirect-early-signal a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Indirect early signal"@en ; skos:altLabel "Possible hazard link"@en ; skos:definition "The earliest documented indication of a possible indirect relationship between a hazard and the food product involved in a later incident."@en ; skos:broader efsr:early-signal .
-efsr:direct-early-signal a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Direct early signal"@en ; skos:altLabel "First direct link"@en ; skos:definition "The first written evidence of a direct relationship between a hazard and a food product before general public announcement."@en ; skos:broader efsr:early-signal .
-efsr:consecutive-event a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Consecutive event"@en ; skos:altLabel "Intermediate event"@en ; skos:definition "An event occurring between the first direct link of a hazard to food and the first public announcement."@en ; skos:related efsr:direct-early-signal, efsr:first-public-announcement .
-efsr:first-public-announcement a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "First public announcement"@en ; skos:altLabel "Initial public notification"@en, "Public warning"@en ; skos:definition "The first communication to the general public concerning the relationship between a hazard and a food product."@en .
-efsr:early-identification-time-window a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early identification time window"@en ; skos:altLabel "Intervention window"@en ; skos:definition "The period between the first detectable early signal and the first public announcement of a food safety incident."@en .
-efsr:signal-novelty a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Signal novelty"@en ; skos:altLabel "Information novelty"@en ; skos:definition "The newness of information, knowledge, insight or a relationship that may indicate an emerging food safety hazard."@en .
-efsr:signal-uncertainty a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early-signal uncertainty"@en ; skos:altLabel "Scientific uncertainty"@en ; skos:definition "Uncertainty resulting from limited, incomplete or inconclusive evidence associated with an early signal."@en .
-efsr:early-signal-detection a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Early signal detection"@en ; skos:definition "The identification of information that may precede and indicate an emerging food safety hazard or risk."@en ; skos:broader efsr:emerging-risk-identification .
-efsr:horizon-scanning a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Horizon scanning"@en ; skos:definition "Systematic examination of information for developments that may become relevant to future food safety."@en ; skos:broader efsr:emerging-risk-identification .
-efsr:scenario-development a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Scenario development"@en ; skos:definition "Development of plausible pathways by which an identified hazard may evolve into a food safety risk or incident."@en ; skos:broader efsr:emerging-risk-identification .
-efsr:information-extraction a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Information extraction"@en ; skos:definition "Extraction of relevant concepts and relationships from textual data sources."@en ; skos:broader efsr:emerging-risk-identification .
-efsr:proactive-risk-management a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Proactive risk management"@en ; skos:definition "Initiation of measures before a potential food safety risk develops into an incident."@en ; skos:related efsr:emerging-risk-identification .
+efs:BeneficialHealthEffects a skos:Concept ;
+    skos:prefLabel "Beneficial Health Effects"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:HealthEffect ;
+    skos:broaderTransitive efs:HealthEffect .
 
-# Historical analysis concepts
-efsr:historical-case-analysis a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical case analysis"@en ; skos:altLabel "Retrospective case analysis"@en ; skos:definition "The retrospective reconstruction and evaluation of events preceding a food safety incident."@en ; skos:narrower efsr:case-timeline, efsr:case-event, efsr:case-reconstruction, efsr:retrospective-multi-case-analysis ; skos:topConceptOf efsr:scheme .
-efsr:case-timeline a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical case timeline"@en ; skos:altLabel "Incident timeline"@en ; skos:definition "A chronological representation of early signals, consecutive events and public announcements associated with a food safety case."@en ; skos:broader efsr:historical-case-analysis .
-efsr:case-event a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical case event"@en ; skos:definition "A documented occurrence forming part of the development of a historical food safety case."@en ; skos:broader efsr:historical-case-analysis .
-efsr:case-reconstruction a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Case reconstruction"@en ; skos:definition "The process of identifying and ordering documents and events that describe the development of a historical food safety incident."@en ; skos:broader efsr:historical-case-analysis .
-efsr:retrospective-multi-case-analysis a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Retrospective multi-case analysis"@en ; skos:definition "An analysis of multiple past incidents intended to identify common characteristics, patterns and lessons."@en ; skos:broader efsr:historical-case-analysis .
-efsr:recurring-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Recurring food safety hazard"@en ; skos:altLabel "Re-emerging hazard"@en ; skos:definition "A known hazard that reappears over time, possibly through a new source, process or exposure route."@en ; skos:broader efsr:known-hazard .
-efsr:one-off-incident a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Apparently unique food safety incident"@en ; skos:altLabel "One-off incident"@en ; skos:definition "An incident initially considered unusual, unique or difficult to predict."@en ; skos:broader efsr:food-safety-incident .
-efsr:forgotten-hazard a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Forgotten hazard"@en ; skos:definition "A previously documented hazard that is no longer actively recognized and may appear new when it re-emerges."@en ; skos:broader efsr:known-hazard .
+efs:Berries a skos:Concept ;
+    skos:prefLabel "Berries"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Fruits ;
+    skos:broaderTransitive efs:Fruits .
 
-# Historical food safety case concepts
-efsr:historical-food-safety-case a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Historical food safety case"@en ; skos:altLabel "Past food safety case"@en ; skos:definition "A past food safety incident or hazard development studied retrospectively to identify early signals, event sequences and lessons for future risk identification."@en ; skos:narrower efsr:case-3-mcpd-soy-sauce, efsr:case-acrylamide-fried-food, efsr:case-benzene-soft-drinks, efsr:case-bpa-canned-food, efsr:case-bse-cow-meat, efsr:case-cronobacter-infant-formula, efsr:case-dioxin-cow-milk, efsr:case-furan-food, efsr:case-itx-infant-formula, efsr:case-melamine-infant-milk, efsr:case-pfos-pfoa-water, efsr:case-semicarbazide-food, efsr:case-sudan-i-chilli ; skos:topConceptOf efsr:scheme .
-efsr:case-3-mcpd-soy-sauce a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "3-MCPD in soy sauce case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-acrylamide-fried-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Acrylamide in fried food case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-benzene-soft-drinks a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Benzene in soft drinks case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-bpa-canned-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Bisphenol A in canned food case"@en ; skos:altLabel "BPA in canned food case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-bse-cow-meat a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "BSE in cow meat case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-cronobacter-infant-formula a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Cronobacter sakazakii in infant formula case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-dioxin-cow-milk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Dioxin via clay in cow milk case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-furan-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Furan in thermally processed food case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-itx-infant-formula a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "ITX in infant formula case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-melamine-infant-milk a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Melamine in infant milk powder case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-pfos-pfoa-water a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "PFOS/PFOA in drinking water case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-semicarbazide-food a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Semicarbazide in packaged food case"@en ; skos:broader efsr:historical-food-safety-case .
-efsr:case-sudan-i-chilli a skos:Concept ; skos:inScheme efsr:scheme ; skos:prefLabel "Sudan I in chilli products case"@en ; skos:broader efsr:historical-food-safety-case .
+efs:BrassicaVegetables a skos:Concept ;
+    skos:prefLabel "Brassica Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:BulbVegetables a skos:Concept ;
+    skos:prefLabel "Bulb Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:Carcinogenicity a skos:Concept ;
+    skos:prefLabel "Carcinogenicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:Cardiovasculartoxicity a skos:Concept ;
+    skos:prefLabel "Cardiovasculartoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:Cause a skos:Concept ;
+    skos:prefLabel "Cause"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Event ;
+    skos:broaderTransitive efs:Event .
+
+efs:Change a skos:Concept ;
+    skos:prefLabel "Change"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:ChangedPhysiology a skos:Concept ;
+    skos:prefLabel "Changed Physiology"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:Chemicals a skos:Concept ;
+    skos:prefLabel "Chemicals"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Substance ;
+    skos:broaderTransitive efs:Substance .
+
+efs:Chemicals_By_Adverse_Effect a skos:Concept ;
+    skos:prefLabel "Chemicals By Adverse Effect"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Chemicals ;
+    skos:broaderTransitive efs:Chemicals .
+
+efs:Chemicals_By_Application a skos:Concept ;
+    skos:prefLabel "Chemicals By Application"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Chemicals ;
+    skos:broaderTransitive efs:Chemicals .
+
+efs:Chemicals_By_Biological_Origin a skos:Concept ;
+    skos:prefLabel "Chemicals By Biological Origin"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Chemicals ;
+    skos:broaderTransitive efs:Chemicals .
+
+efs:Chemicals_By_Concern a skos:Concept ;
+    skos:prefLabel "Chemicals By Concern"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Chemicals ;
+    skos:broaderTransitive efs:Chemicals .
+
+efs:Chemicals_By_Functional_Group a skos:Concept ;
+    skos:prefLabel "Chemicals By Functional Group"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Chemicals ;
+    skos:broaderTransitive efs:Chemicals .
+
+efs:Chemicals_Generic_Terms a skos:Concept ;
+    skos:prefLabel "Chemicals Generic Terms"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Chemicals ;
+    skos:broaderTransitive efs:Chemicals .
+
+efs:CitrusFruits a skos:Concept ;
+    skos:prefLabel "Citrus Fruits"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Fruits ;
+    skos:broaderTransitive efs:Fruits .
+
+efs:Concern a skos:Concept ;
+    skos:prefLabel "Concern"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Contamination a skos:Concept ;
+    skos:prefLabel "Contamination"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Diseases a skos:Concept ;
+    skos:prefLabel "Diseases"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:HealthEffect ;
+    skos:broaderTransitive efs:HealthEffect .
+
+efs:Effect a skos:Concept ;
+    skos:prefLabel "Effect"@en ;
+    skos:inScheme efs:scheme ;
+    skos:topConceptOf efs:scheme .
+
+efs:EmergingHealthEffect a skos:Concept ;
+    skos:prefLabel "Emerging Health Effect"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Event a skos:Concept ;
+    skos:prefLabel "Event"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:SupportiveClasses ;
+    skos:broaderTransitive efs:SupportiveClasses .
+
+efs:Exposure a skos:Concept ;
+    skos:prefLabel "Exposure"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:FirstReport a skos:Concept ;
+    skos:prefLabel "First Report"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Food a skos:Concept ;
+    skos:prefLabel "Food"@en ;
+    skos:inScheme efs:scheme ;
+    skos:topConceptOf efs:scheme .
+
+efs:FruitingVegetables a skos:Concept ;
+    skos:prefLabel "Fruiting Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:Fruits a skos:Concept ;
+    skos:prefLabel "Fruits"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Food ;
+    skos:broaderTransitive efs:Food .
+
+efs:FruitsMisc a skos:Concept ;
+    skos:prefLabel "Fruits Misc"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Fruits ;
+    skos:broaderTransitive efs:Fruits .
+
+efs:Fungi_Pathogens a skos:Concept ;
+    skos:prefLabel "Fungi Pathogens"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Micro-organisms ;
+    skos:broaderTransitive efs:Micro-organisms .
+
+efs:Genotoxicity a skos:Concept ;
+    skos:prefLabel "Genotoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:Geography a skos:Concept ;
+    skos:prefLabel "Geography"@en ;
+    skos:inScheme efs:scheme ;
+    skos:topConceptOf efs:scheme .
+
+efs:Grains a skos:Concept ;
+    skos:prefLabel "Grains"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Food ;
+    skos:broaderTransitive efs:Food .
+
+efs:Health a skos:Concept ;
+    skos:prefLabel "Health"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:HealthEffect ;
+    skos:broaderTransitive efs:HealthEffect .
+
+efs:HealthEffect a skos:Concept ;
+    skos:prefLabel "Health Effect"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Effect ;
+    skos:broaderTransitive efs:Effect .
+
+efs:Helminths_Pathogens a skos:Concept ;
+    skos:prefLabel "Helminths Pathogens"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Micro-organisms ;
+    skos:broaderTransitive efs:Micro-organisms .
+
+efs:Hepatotoxicity a skos:Concept ;
+    skos:prefLabel "Hepatotoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:Herbs a skos:Concept ;
+    skos:prefLabel "Herbs"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:SpicesHerbs ;
+    skos:broaderTransitive efs:SpicesHerbs .
+
+efs:Immunotoxicity a skos:Concept ;
+    skos:prefLabel "Immunotoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:LeafyVegetables a skos:Concept ;
+    skos:prefLabel "Leafy Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:LegumeVegetables a skos:Concept ;
+    skos:prefLabel "Legume Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:Levels a skos:Concept ;
+    skos:prefLabel "Levels"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Micro-organisms a skos:Concept ;
+    skos:prefLabel "Micro-organisms"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Substance ;
+    skos:broaderTransitive efs:Substance .
+
+efs:Mushrooms a skos:Concept ;
+    skos:prefLabel "Mushrooms"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Food ;
+    skos:broaderTransitive efs:Food .
+
+efs:Neurotoxicity a skos:Concept ;
+    skos:prefLabel "Neurotoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:NewCompound a skos:Concept ;
+    skos:prefLabel "New Compound"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Novelty a skos:Concept ;
+    skos:prefLabel "Novelty"@en ;
+    skos:inScheme efs:scheme ;
+    skos:topConceptOf efs:scheme .
+
+efs:OtherToxiceffects a skos:Concept ;
+    skos:prefLabel "Other Toxiceffects"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:Outcomes a skos:Concept ;
+    skos:prefLabel "Outcomes"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:HealthEffect ;
+    skos:broaderTransitive efs:HealthEffect .
+
+efs:Phototoxicity a skos:Concept ;
+    skos:prefLabel "Phototoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:PointerRange a skos:Concept ;
+    skos:prefLabel "Pointer Range"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:SupportiveClasses ;
+    skos:broaderTransitive efs:SupportiveClasses .
+
+efs:PomeFruits a skos:Concept ;
+    skos:prefLabel "Pome Fruits"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Fruits ;
+    skos:broaderTransitive efs:Fruits .
+
+efs:Protozoa_Pathogens a skos:Concept ;
+    skos:prefLabel "Protozoa Pathogens"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Micro-organisms ;
+    skos:broaderTransitive efs:Micro-organisms .
+
+efs:Reprotoxicity a skos:Concept ;
+    skos:prefLabel "Reprotoxicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:RootTuberVegetables a skos:Concept ;
+    skos:prefLabel "Root Tuber Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:Situation a skos:Concept ;
+    skos:prefLabel "Situation"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:SupportiveClasses ;
+    skos:broaderTransitive efs:SupportiveClasses .
+
+efs:Spices a skos:Concept ;
+    skos:prefLabel "Spices"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:SpicesHerbs ;
+    skos:broaderTransitive efs:SpicesHerbs .
+
+efs:SpicesHerbs a skos:Concept ;
+    skos:prefLabel "Spices Herbs"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Food ;
+    skos:broaderTransitive efs:Food .
+
+efs:StemVegetables a skos:Concept ;
+    skos:prefLabel "Stem Vegetables"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Vegetable ;
+    skos:broaderTransitive efs:Vegetable .
+
+efs:StoneFruits a skos:Concept ;
+    skos:prefLabel "Stone Fruits"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Fruits ;
+    skos:broaderTransitive efs:Fruits .
+
+efs:StringDocuverse a skos:Concept ;
+    skos:prefLabel "String Docuverse"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:SupportiveClasses ;
+    skos:broaderTransitive efs:SupportiveClasses .
+
+efs:Substance a skos:Concept ;
+    skos:prefLabel "Substance"@en ;
+    skos:inScheme efs:scheme ;
+    skos:topConceptOf efs:scheme .
+
+efs:SupportiveClasses a skos:Concept ;
+    skos:prefLabel "Supportive Classes"@en ;
+    skos:inScheme efs:scheme ;
+    skos:topConceptOf efs:scheme .
+
+efs:SymptomsSigns a skos:Concept ;
+    skos:prefLabel "Symptoms Signs"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:HealthEffect ;
+    skos:broaderTransitive efs:HealthEffect .
+
+efs:Teratogenicity a skos:Concept ;
+    skos:prefLabel "Teratogenicity"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:ToxicEffects ;
+    skos:broaderTransitive efs:ToxicEffects .
+
+efs:ToxicEffects a skos:Concept ;
+    skos:prefLabel "Toxic Effects"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:HealthEffect ;
+    skos:broaderTransitive efs:HealthEffect .
+
+efs:Uncertainty a skos:Concept ;
+    skos:prefLabel "Uncertainty"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Novelty ;
+    skos:broaderTransitive efs:Novelty .
+
+efs:Vegetable a skos:Concept ;
+    skos:prefLabel "Vegetable"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Food ;
+    skos:broaderTransitive efs:Food .
+
+efs:Viruses_Pathogens a skos:Concept ;
+    skos:prefLabel "Viruses Pathogens"@en ;
+    skos:inScheme efs:scheme ;
+    skos:broader efs:Micro-organisms ;
+    skos:broaderTransitive efs:Micro-organisms .
+
