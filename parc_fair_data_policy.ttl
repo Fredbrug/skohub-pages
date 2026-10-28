@@ -1,0 +1,890 @@
+@prefix schema: <http://schema.org/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix ex: <https://fredbrug.github.io/skohub-pages/pfdp/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix shui: <http://www.w3.org/ns/shacl-ui#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+
+<https://fredbrug.github.io/skohub-pages/pfdp> a skos:ConceptScheme;
+  dct:title "PARC FAIR Data Policy"@en, "PARC FAIR Data Policy"@nl;
+  dct:description "A controlled vocabulary maintained in Excel and converted to SKOS Turtle."@en;
+  dct:creator "TNO";
+  dct:issued "2026-10-27"^^xsd:date;
+  dct:modified "2026-10-27"^^xsd:date;
+  dct:license <https://creativecommons.org/licenses/by/4.0/>;
+  skos:hasTopConcept ex:accessible, ex:applicable-laws-and-regulations-general, ex:archiving,
+    ex:data-governance-general, ex:data-management-general, ex:data-policy .
+
+ex:accessible a skos:Concept;
+  skos:prefLabel "Accessible"@en, "Toegankelijk"@nl;
+  skos:altLabel "Accessibility"@en, "Toegankelijkheid"@nl;
+  skos:definition "The condition in which data and metadata can be retrieved by authorized users through clearly specified procedures and, where relevant, standard communication protocols."@en,
+    "De toestand waarin data en metadata door bevoegde gebruikers kunnen worden opgehaald via duidelijk gespecificeerde procedures en, waar relevant, standaardcommunicatieprotocollen."@nl;
+  skos:notation "ACC";
+  skos:scopeNote """Once the user finds the required data, the user needs to know how they can be accessed, possibly including authentication and authorization (GO-FAIR). One of the central goals of promoting data access and sharing is to improve the overall efficiency of publicly funded scientific research to avoid the expensive and unnecessary duplication of data collection efforts (OECD). (FAIR Principles - GO FAIR,go-fair.org)"""@en;
+  skos:closeMatch <https://www.go-fair.org/fair-principles/a1-metadata-retrievable-identifier-standardised-communication-protocol/>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:data-access, ex:efficiency;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp>;
+  skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-access a skos:Concept;
+  skos:prefLabel "Data access"@en, "Toegang tot data"@nl;
+  skos:altLabel "Access to data"@en, "Data accessibility"@en, "Datatoegang"@nl, "Toegankelijkheid van data"@nl;
+  skos:definition "The authorized ability to locate, retrieve, view, download, or otherwise use data under defined technical, legal, ethical, and organizational conditions."@en,
+    "De geautoriseerde mogelijkheid om data te vinden, op te halen, te bekijken, te downloaden of anderszins te gebruiken onder vastgestelde technische, juridische, ethische en organisatorische voorwaarden."@nl;
+  skos:broader ex:accessible;
+  skos:notation "DA";
+  skos:scopeNote """The continued, available for use, ongoing usability of a digital 
+resource, retaining all qualities of authenticity, accuracy and 
+functionality deemed to be essential for the purposes the digital 
+material was created and/or acquired for. Users who have access 
+can retrieve, manipulate, copy, and store copies on a wide range 
+of hard drives and external devices. (https://codata.org/rdm
+terminology/access/)"""@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:efficiency a skos:Concept;
+  skos:prefLabel "Efficiency"@en, "Efficiëntie"@nl;
+  skos:altLabel "Resource efficiency"@en, "Doelmatigheid"@nl;
+  skos:definition "The degree to which data-related objectives are achieved while minimizing the time, effort, cost, and computing resources required."@en,
+    "De mate waarin datagerelateerde doelstellingen worden bereikt met zo min mogelijk benodigde tijd, inspanning, kosten en rekenmiddelen."@nl;
+  skos:broader ex:accessible;
+  skos:notation "EFF";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning efficiency. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:applicable-laws-and-regulations-general a skos:Concept;
+  skos:prefLabel "Applicable laws and regulations (general)"@en, "Toepasselijke wet- en regelgeving (algemeen)"@nl;
+  skos:altLabel "Legal and regulatory requirements"@en, "Regulatory compliance"@en,
+    "Wettelijke en regelgevende vereisten"@nl, "Naleving van wet- en regelgeving"@nl;
+  skos:definition "The body of binding legal, regulatory, contractual, funder, institutional, and policy requirements that governs how data may be collected, managed, shared, retained, and disposed of."@en,
+    "Het geheel van bindende wettelijke, regelgevende, contractuele, financierings-, institutionele en beleidsvereisten dat bepaalt hoe data mogen worden verzameld, beheerd, gedeeld, bewaard en verwijderd."@nl;
+  skos:notation "ALR";
+  skos:scopeNote "Use for general statements about applicable laws and regulations (general) and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:narrower ex:applicable-laws-and-regulations-laws-contracts-funder-requirements-policies-guidelines-com;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp>;
+  skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:applicable-laws-and-regulations-laws-contracts-funder-requirements-policies-guidelines-com
+  a skos:Concept;
+  skos:prefLabel "Applicable laws and regulations (laws, contracts, funder requirements, policies, guidelines, combined/aligned with the EU Common Open Data Platform, ECHA, Horizon Europe, OECD, Science Europe)"@en,
+    "Toepasselijke wet- en regelgeving (wetten, contracten, eisen van financiers, beleid en richtlijnen, gecombineerd met of afgestemd op het gemeenschappelijke opendataplatform van de EU, ECHA, Horizon Europe, OESO en Science Europe)"@nl;
+  skos:altLabel "Applicable requirements"@en, "External requirements"@en, "Compliance requirements"@en,
+    "Toepasselijke vereisten"@nl, "Externe vereisten"@nl, "Nalevingsvereisten"@nl;
+  skos:definition "The specific external and internal requirements with which a data policy is aligned, including legislation, contracts, funder conditions, policies, guidelines, and relevant European or international frameworks."@en,
+    "De specifieke externe en interne vereisten waarop een databeleid is afgestemd, waaronder wetgeving, contracten, voorwaarden van financiers, beleid, richtlijnen en relevante Europese of internationale kaders."@nl;
+  skos:broader ex:applicable-laws-and-regulations-general;
+  skos:notation "ALR2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning applicable laws and regulations (laws, contracts, funder requirements, policies, guidelines, combined/aligned with the eu common open data platform, echa, horizon europe, oecd, science europe). Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:archiving a skos:Concept;
+  skos:prefLabel "Archiving"@en, "Archivering"@nl;
+  skos:altLabel "Data archiving"@en, "Digital archiving"@en, "Data-archivering"@nl,
+    "Digitale archivering"@nl;
+  skos:definition "The managed transfer and storage of data and associated documentation for retention, preservation, discovery, access, and possible reuse over a defined period."@en,
+    "De beheerste overdracht en opslag van data en bijbehorende documentatie ten behoeve van bewaring, preservering, vindbaarheid, toegang en mogelijk hergebruik gedurende een vastgestelde periode."@nl;
+  skos:notation "ARC";
+  skos:scopeNote "Use for general statements about archiving and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:preservation, ex:retention-and-deletion;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp>;
+  skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:preservation a skos:Concept;
+  skos:prefLabel "Preservation"@en, "Preservering"@nl;
+  skos:altLabel "Data preservation"@en, "Digital preservation"@en, "Datapreservering"@nl,
+    "Digitale preservering"@nl;
+  skos:definition "The active maintenance of data and metadata over time so that they remain authentic, accessible, understandable, and usable despite technological or organizational change."@en,
+    "Het actief in stand houden van data en metadata zodat deze ondanks technologische of organisatorische veranderingen authentiek, toegankelijk, begrijpelijk en bruikbaar blijven."@nl;
+  skos:broader ex:archiving;
+  skos:notation "PRE";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning preservation. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:closeMatch <https://vocabs.ardc.edu.au/viewById/685>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:retention-and-deletion a skos:Concept;
+  skos:prefLabel "Retention and deletion"@en, "Bewaring en verwijdering"@nl;
+  skos:altLabel "Data retention and disposal"@en, "Retention and disposal"@en, "Databewaring en verwijdering"@nl,
+    "Bewaartermijnen en vernietiging"@nl;
+  skos:definition "The controlled keeping of data for an approved period and its secure deletion or disposition when legal, contractual, scientific, or organizational obligations permit or require it."@en,
+    "Het gecontroleerd bewaren van data gedurende een goedgekeurde termijn en het veilig verwijderen of afvoeren daarvan wanneer wettelijke, contractuele, wetenschappelijke of organisatorische verplichtingen dit toestaan of vereisen."@nl;
+  skos:broader ex:archiving;
+  skos:notation "RD";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning retention and deletion. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-governance-general a skos:Concept;
+  skos:prefLabel "Data governance (general)"@en, "Datagovernance (algemeen)"@nl;
+  skos:altLabel "Data governance"@en, "Databesturing"@nl;
+  skos:definition "The exercise of authority, control, and shared decision-making over data through policies, principles, roles, responsibilities, standards, and oversight mechanisms."@en,
+    "Het uitoefenen van gezag, beheersing en gezamenlijke besluitvorming over data door middel van beleid, principes, rollen, verantwoordelijkheden, standaarden en toezichtmechanismen."@nl;
+  skos:notation "DG";
+  skos:scopeNote "Use for general statements about data governance (general) and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  skos:exactMatch <http://www.wikidata.org/entity/Q5227240>;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:narrower ex:aim-of-the-policy, ex:data-depositor, ex:data-governance-process-board-committee-etc,
+    ex:data-valuation, ex:ownership, ex:roles-and-responsibilities, ex:stakeholder-needs,
+    ex:warranty-and-liability;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp>;
+  skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:aim-of-the-policy a skos:Concept;
+  skos:prefLabel "Aim of the policy"@en, "Doel van het beleid"@nl;
+  skos:altLabel "Policy objective"@en, "Policy purpose"@en, "Beleidsdoel"@nl, "Doelstelling van het beleid"@nl;
+  skos:definition "The intended outcome of a data policy, describing why it exists and what improvements in data management, compliance, access, quality, or reuse it seeks to achieve."@en,
+    "Het beoogde resultaat van een databeleid, waarin staat waarom het bestaat en welke verbeteringen in datamanagement, naleving, toegang, kwaliteit of hergebruik worden nagestreefd."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "AP";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning aim of the policy. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-depositor a skos:Concept;
+  skos:prefLabel "Data depositor"@en, "Data-aanbieder"@nl;
+  skos:altLabel "Depositor"@en, "Data submitter"@en, "Depotgever"@nl, "Data-indiener"@nl;
+  skos:definition "A person or organization that submits data and associated metadata to a repository or other managed service and accepts the applicable deposit conditions."@en,
+    "Een persoon of organisatie die data en bijbehorende metadata bij een repository of andere beheerde dienst aanlevert en de toepasselijke depotvoorwaarden accepteert."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "DD";
+  skos:scopeNote """Submission of primary data and derived information to public data repositories is an essential step in the scientific process. Through submission, the scientific community is fed the raw materials for the building and maintenance of the complete and up-to-date data sets that support searches and analysis on the latest sequences, 
+structures and molecular profiles of living systems. Serving as a complement to the literature publication process and supporting early data sharing. (https://www.ebi.ac.uk/submission/)"""@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-governance-process-board-committee-etc a skos:Concept;
+  skos:prefLabel "Data governance (process, Board, committee etc.)"@en, "Datagovernance (proces, bestuur, commissie enz.)"@nl;
+  skos:altLabel "Data governance structure"@en, "Data governance process"@en, "Data governance board"@en,
+    "Datagovernancestructuur"@nl, "Datagovernanceproces"@nl, "Datagovernancebestuur"@nl;
+  skos:definition "The formal structures and processes, such as boards, committees, decision forums, and escalation routes, used to direct and oversee data-related decisions."@en,
+    "De formele structuren en processen, zoals besturen, commissies, besluitvormingsfora en escalatieroutes, waarmee datagerelateerde besluiten worden aangestuurd en gecontroleerd."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "DG2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning data governance (process, board, committee etc.). Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-valuation a skos:Concept;
+  skos:prefLabel "Data valuation"@en, "Datawaardering"@nl;
+  skos:altLabel "Valuation of data"@en, "Data value assessment"@en, "Waardering van data"@nl,
+    "Beoordeling van datawaarde"@nl;
+  skos:definition "The systematic assessment of the financial, operational, scientific, legal, or societal value of data and of the costs and risks associated with managing it."@en,
+    "De systematische beoordeling van de financiële, operationele, wetenschappelijke, juridische of maatschappelijke waarde van data en van de kosten en risico’s van het beheer ervan."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "DV";
+  skos:scopeNote """Data valuation is the assessment of the economic value of data. 
+(https://echa.europa.eu/documents/10162/2324906/guidance_on
+_data_sharing_en.pdf/545e4463-9e67-43f0-852f
+35e70a8ead60?t=1669385322122 )"""@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:ownership a skos:Concept;
+  skos:prefLabel "Ownership"@en, "Eigenaarschap"@nl;
+  skos:altLabel "Data ownership"@en, "Data-eigenaarschap"@nl;
+  skos:definition "The assigned authority and accountability for decisions about a data asset, including its definition, quality, access, use, protection, and lifecycle management."@en,
+    "De toegewezen bevoegdheid en verantwoordelijkheid voor besluiten over een dataobject, waaronder definitie, kwaliteit, toegang, gebruik, bescherming en levenscyclusbeheer."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "OWN";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning ownership. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:roles-and-responsibilities a skos:Concept;
+  skos:prefLabel "Roles and responsibilities"@en, "Rollen en verantwoordelijkheden"@nl;
+  skos:altLabel "Data roles and accountabilities"@en, "Accountabilities"@en, "Datarollen en verantwoordelijkheden"@nl,
+    "Verantwoordingsplichten"@nl;
+  skos:definition "The documented allocation of accountability, decision rights, and operational duties for creating, managing, protecting, sharing, preserving, and using data."@en,
+    "De gedocumenteerde verdeling van verantwoordingsplicht, beslissingsbevoegdheden en operationele taken voor het creëren, beheren, beschermen, delen, preserveren en gebruiken van data."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "RR";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning roles and responsibilities. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:stakeholder-needs a skos:Concept;
+  skos:prefLabel "Stakeholder needs"@en, "Behoeften van belanghebbenden"@nl;
+  skos:altLabel "Stakeholder requirements"@en, "Eisen van belanghebbenden"@nl;
+  skos:definition "The data-related requirements and expectations of people or organizations that create, manage, fund, regulate, provide, or use data."@en,
+    "De datagerelateerde behoeften en verwachtingen van personen of organisaties die data creëren, beheren, financieren, reguleren, leveren of gebruiken."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "SN";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning stakeholder needs. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:warranty-and-liability a skos:Concept;
+  skos:prefLabel "Warranty and liability"@en, "Garantie en aansprakelijkheid"@nl;
+  skos:altLabel "Liability and warranties"@en, "Disclaimer and liability"@en, "Aansprakelijkheid en garanties"@nl,
+    "Vrijwaring en aansprakelijkheid"@nl;
+  skos:definition "The stated assurances, limitations, and allocation of legal responsibility concerning the accuracy, availability, fitness, use, or misuse of data and data services."@en,
+    "De vastgelegde garanties, beperkingen en verdeling van juridische verantwoordelijkheid met betrekking tot de nauwkeurigheid, beschikbaarheid, geschiktheid, het gebruik of misbruik van data en datadiensten."@nl;
+  skos:broader ex:data-governance-general;
+  skos:notation "WL";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning warranty and liability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-management-general a skos:Concept;
+  skos:prefLabel "Data management (general)"@en, "Datamanagement (algemeen)"@nl;
+  skos:altLabel "Data management"@en, "Databeheer"@nl;
+  skos:definition "The planning, execution, and oversight of practices that acquire, organize, store, protect, maintain, deliver, preserve, and dispose of data throughout its lifecycle."@en,
+    "Het plannen, uitvoeren en bewaken van werkwijzen voor het verwerven, organiseren, opslaan, beschermen, onderhouden, leveren, preserveren en verwijderen van data gedurende de gehele levenscyclus."@nl;
+  skos:notation "DM";
+  skos:scopeNote "Use for general statements about data management (general) and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:narrower ex:data-curation, ex:data-integrity, ex:data-management-tool-process,
+    ex:data-quality, ex:dmp, ex:documentation, ex:research-integrity;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp>;
+  skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-curation a skos:Concept;
+  skos:prefLabel "Data curation"@en, "Datacuratie"@nl;
+  skos:altLabel "Curation of data"@en, "Curatie van data"@nl;
+  skos:definition "The active selection, appraisal, organization, description, quality control, preservation, and enhancement of data to support continued access and reuse."@en,
+    "De actieve selectie, waardering, organisatie, beschrijving, kwaliteitscontrole, preservering en verrijking van data ter ondersteuning van blijvende toegang en hergebruik."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "DC";
+  skos:scopeNote """A managed process, throughout the data lifecycle, by which data/data collections are cleansed, documented, standardized, formatted and inter-related. This includes versioning data, or forming a new collection from several data sources, annotating with metadata, adding codes to raw data (e.g., classifying a galaxy 
+image with a galaxy type such as “spiral”). Higher levels of curation involve maintaining links with annotation and with other published materials. Thus, a dataset may include a 
+citation link to publication whose analysis was based on the data. The goal of curation is to manage and promote the use of data from its point of creation to ensure it is fit for contemporary purpose and available for discovery and re-use. For dynamic datasets this may mean continuous enrichment or updating to keep it fit for purpose. Special forms of curation may be available in data repositories. The data curation process itself must be documented as part of curation. Thus, curation and provenance are highly related. https://codata.org/rdm
+terminology/data-curation/)"""@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-integrity a skos:Concept;
+  skos:prefLabel "Data integrity"@en, "Data-integriteit"@nl;
+  skos:altLabel "Integrity of data"@en, "Integriteit van data"@nl;
+  skos:definition "The condition in which data remain complete, accurate, consistent, and protected from unauthorized or unintended alteration throughout their lifecycle."@en,
+    "De toestand waarin data gedurende de gehele levenscyclus volledig, nauwkeurig en consistent blijven en beschermd zijn tegen ongeoorloofde of onbedoelde wijziging."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "DI";
+  skos:scopeNote """Data integrity requires that data be complete, accurate, consistent, and in context. Codata: In the context of data and network security: The assurance that information can only be accessed or modified by those authorized to do so. Measures taken to ensure integrity include controlling the physical environment of networked 
+terminals and servers, restricting access to data, and maintaining rigorous authentication practices. Data integrity can also be threatened by environmental hazards, such as heat, dust, and electrical surges. (https://codata.org/rdm-terminology/integrity/ )"""@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-management-tool-process a skos:Concept;
+  skos:prefLabel "Data management (tool, process)"@en, "Datamanagement (hulpmiddel, proces)"@nl;
+  skos:altLabel "Data management process"@en, "Data management tool"@en, "Datamanagementproces"@nl,
+    "Datamanagementhulpmiddel"@nl;
+  skos:definition "A method, workflow, service, or software capability used to perform and control data-management activities across the data lifecycle."@en,
+    "Een methode, werkproces, dienst of softwarevoorziening waarmee datamanagementactiviteiten gedurende de datalevenscyclus worden uitgevoerd en beheerst."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "DM2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning data management (tool, process). Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-quality a skos:Concept;
+  skos:prefLabel "Data quality"@en, "Datakwaliteit"@nl;
+  skos:altLabel "Quality of data"@en, "Kwaliteit van data"@nl;
+  skos:definition "The degree to which data meet defined requirements and are fit for their intended uses, commonly assessed through dimensions such as accuracy, completeness, consistency, timeliness, validity, and uniqueness."@en,
+    "De mate waarin data voldoen aan vastgestelde eisen en geschikt zijn voor het beoogde gebruik, vaak beoordeeld aan de hand van dimensies zoals nauwkeurigheid, volledigheid, consistentie, tijdigheid, validiteit en uniciteit."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "DQ";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning data quality. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:dmp a skos:Concept;
+  skos:prefLabel "DMP"@en, "Datamanagementplan (DMP)"@nl;
+  skos:altLabel "Data management plan"@en, "Datamanagementplan"@nl;
+  skos:definition "A living document that describes how data will be created or collected, documented, stored, protected, shared, preserved, and disposed of during and after a project."@en,
+    "Een levend document dat beschrijft hoe data tijdens en na een project worden gecreëerd of verzameld, gedocumenteerd, opgeslagen, beschermd, gedeeld, gepreserveerd en verwijderd."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "DMP";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning dmp. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:closeMatch <https://vocabs.ardc.edu.au/viewById/685>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:documentation a skos:Concept;
+  skos:prefLabel "Documentation"@en, "Documentatie"@nl;
+  skos:altLabel "Data documentation"@en, "Research data documentation"@en, "Datadocumentatie"@nl,
+    "Documentatie van onderzoeksdata"@nl;
+  skos:definition "Recorded information that explains the content, context, structure, provenance, processing, quality, conditions of use, and management of data."@en,
+    "Vastgelegde informatie die de inhoud, context, structuur, herkomst, verwerking, kwaliteit, gebruiksvoorwaarden en het beheer van data toelicht."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "DOC";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning documentation. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:research-integrity a skos:Concept;
+  skos:prefLabel "Research integrity"@en, "Wetenschappelijke integriteit"@nl;
+  skos:altLabel "Responsible research conduct"@en, "Scientific integrity"@en, "Verantwoorde onderzoekspraktijk"@nl,
+    "Onderzoeksintegriteit"@nl;
+  skos:definition "Adherence to ethical and professional principles that make research and its data honest, transparent, accountable, traceable, and reproducible."@en,
+    "Het naleven van ethische en professionele principes waardoor onderzoek en onderzoeksdata eerlijk, transparant, verantwoordbaar, traceerbaar en reproduceerbaar zijn."@nl;
+  skos:broader ex:data-management-general;
+  skos:notation "RI";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning research integrity. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-policy a skos:Concept;
+  skos:prefLabel "Data policy"@en, "Databeleid"@nl;
+  skos:altLabel "Data governance policy"@en, "Policy for data"@en, "Datagovernancebeleid"@nl,
+    "Beleid voor data"@nl;
+  skos:definition "A formal statement of principles, rules, responsibilities, and expected practices that directs how data are governed and managed within a defined scope."@en,
+    "Een formele vastlegging van principes, regels, verantwoordelijkheden en verwachte werkwijzen die richting geeft aan de governance en het beheer van data binnen een bepaald toepassingsgebied."@nl;
+  skos:notation "DP";
+  skos:scopeNote "Use for general statements about data policy and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:narrower ex:other-guidelines-frameworks, ex:policy-implementation, ex:policy-review,
+    ex:scope-and-aim-of-the-data-policy;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:other-guidelines-frameworks a skos:Concept;
+  skos:prefLabel "Other guidelines/frameworks"@en, "Overige richtlijnen en raamwerken"@nl;
+  skos:altLabel "Supporting guidelines"@en, "Related frameworks"@en, "Ondersteunende richtlijnen"@nl,
+    "Gerelateerde raamwerken"@nl;
+  skos:definition "Relevant non-binding or supporting standards, codes, principles, models, and good-practice frameworks used to interpret or implement a data policy."@en,
+    "Relevante niet-bindende of ondersteunende standaarden, gedragscodes, principes, modellen en goedepraktijkkaders die worden gebruikt om een databeleid te interpreteren of uit te voeren."@nl;
+  skos:broader ex:data-policy;
+  skos:notation "OGF";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning other guidelines/frameworks. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:policy-implementation a skos:Concept;
+  skos:prefLabel "Policy implementation"@en, "Beleidsimplementatie"@nl;
+  skos:altLabel "Implementation of policy"@en, "Policy operationalisation"@en, "Implementatie van beleid"@nl,
+    "Operationalisering van beleid"@nl;
+  skos:definition "The coordinated actions, controls, resources, communication, training, and monitoring used to put a data policy into operational practice."@en,
+    "De gecoördineerde maatregelen, beheersingsmechanismen, middelen, communicatie, opleiding en monitoring waarmee een databeleid in de operationele praktijk wordt gebracht."@nl;
+  skos:broader ex:data-policy;
+  skos:notation "PI";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning policy implementation. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:policy-review a skos:Concept;
+  skos:prefLabel "Policy review"@en, "Beleidsevaluatie"@nl;
+  skos:altLabel "Policy evaluation"@en, "Policy revision"@en, "Beleidsevaluatie"@nl,
+    "Beleidsherziening"@nl;
+  skos:definition "The periodic assessment and revision of a policy to ensure that it remains effective, current, compliant, and aligned with stakeholder needs and organizational objectives."@en,
+    "De periodieke beoordeling en herziening van een beleid om te waarborgen dat het doeltreffend, actueel, conform en afgestemd op behoeften van belanghebbenden en organisatiedoelen blijft."@nl;
+  skos:broader ex:data-policy;
+  skos:notation "PR";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning policy review. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:scope-and-aim-of-the-data-policy a skos:Concept;
+  skos:prefLabel "Scope and aim of the data policy"@en, "Reikwijdte en doel van het databeleid"@nl;
+  skos:altLabel "Data policy scope and purpose"@en, "Policy scope"@en, "Reikwijdte en doel van databeleid"@nl,
+    "Beleidsreikwijdte"@nl;
+  skos:definition "The defined subjects, data, people, activities, systems, and organizational boundaries covered by a data policy, together with its intended outcomes."@en,
+    "De afgebakende onderwerpen, data, personen, activiteiten, systemen en organisatieonderdelen waarop een databeleid van toepassing is, samen met de beoogde resultaten ervan."@nl;
+  skos:broader ex:data-policy;
+  skos:notation "SADP";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning scope and aim of the data policy. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-security a skos:Concept;
+  skos:prefLabel "Data security"@en, "Databeveiliging"@nl;
+  skos:altLabel "Information security for data"@en, "Data protection controls"@en, "Informatiebeveiliging van data"@nl,
+    "Beveiligingsmaatregelen voor data"@nl;
+  skos:definition "The planning and application of controls that protect data against unauthorized access, use, disclosure, alteration, loss, or destruction while supporting appropriate availability."@en,
+    "Het plannen en toepassen van maatregelen die data beschermen tegen ongeoorloofde toegang, gebruik, openbaarmaking, wijziging, verlies of vernietiging en tegelijkertijd passende beschikbaarheid ondersteunen."@nl;
+  skos:notation "DS";
+  skos:scopeNote "Use for general statements about data security and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:fair a skos:Concept;
+  skos:prefLabel "FAIR"@en, "FAIR"@nl;
+  skos:altLabel "FAIR data principles"@en, "FAIR principles"@en, "FAIR-dataprincipes"@nl,
+    "FAIR-principes"@nl;
+  skos:definition "A set of guiding principles intended to make data and metadata Findable, Accessible, Interoperable, and Reusable by people and machines."@en,
+    "Een geheel van leidende principes dat beoogt data en metadata vindbaar, toegankelijk, interoperabel en herbruikbaar te maken voor mensen en machines."@nl;
+  skos:notation "FAIR";
+  skos:scopeNote "Use for general statements about fair and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  skos:closeMatch <https://www.go-fair.org/fair-principles/>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:findable, ex:metadata, ex:metadata-schemas, ex:metadata-sharing,
+    ex:discoverability, ex:persistent-identifiers, ex:researcher-identifiers;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:findable a skos:Concept;
+  skos:prefLabel "Findable"@en, "Vindbaar"@nl;
+  skos:altLabel "Findability"@en, "Vindbaarheid"@nl;
+  skos:definition "The condition in which data and metadata can be discovered through rich description, persistent identification, registration, and indexing in searchable resources."@en,
+    "De toestand waarin data en metadata kunnen worden ontdekt door rijke beschrijving, persistente identificatie, registratie en indexering in doorzoekbare bronnen."@nl;
+  skos:broader ex:fair;
+  skos:notation "FIN";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning findable. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:closeMatch <https://www.go-fair.org/fair-principles/f1-meta-data-assigned-globally-unique-persistent-identifiers/>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:metadata a skos:Concept;
+  skos:prefLabel "(Meta)Data"@en, "(Meta)data"@nl;
+  skos:altLabel "Data and metadata"@en, "Metadata and data"@en, "Data en metadata"@nl,
+    "Metadata en data"@nl;
+  skos:definition "Data and the metadata that describe their content, context, structure, provenance, management, and conditions of access and reuse."@en,
+    "Data en de metadata die de inhoud, context, structuur, herkomst, het beheer en de voorwaarden voor toegang en hergebruik beschrijven."@nl;
+  skos:broader ex:fair;
+  skos:notation "MD";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning (meta)data. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:metadata-schemas a skos:Concept;
+  skos:prefLabel "(Meta)Data schemas"@en, "(Meta)dataschema’s"@nl;
+  skos:altLabel "Data and metadata schemas"@en, "Metadata schemas"@en, "Data- en metadataschema’s"@nl,
+    "Metadataschema’s"@nl;
+  skos:definition "Formal specifications that define the elements, structures, constraints, relationships, and encoding rules used to describe data or metadata consistently."@en,
+    "Formele specificaties die de elementen, structuren, beperkingen, relaties en coderingsregels vastleggen voor het consistent beschrijven van data of metadata."@nl;
+  skos:broader ex:fair;
+  skos:notation "MDS";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning (meta)data schemas. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:metadata-sharing a skos:Concept;
+  skos:prefLabel "(Meta)Data sharing"@en, "Delen van (meta)data"@nl;
+  skos:altLabel "Data and metadata sharing"@en, "Data sharing"@en, "Delen van data en metadata"@nl,
+    "Datadeling"@nl;
+  skos:definition "The controlled provision of data and metadata to others under defined technical, legal, ethical, and organizational conditions."@en,
+    "Het gecontroleerd beschikbaar stellen van data en metadata aan anderen onder vastgestelde technische, juridische, ethische en organisatorische voorwaarden."@nl;
+  skos:broader ex:fair;
+  skos:notation "MDSH";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning (meta)data sharing. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:discoverability a skos:Concept;
+  skos:prefLabel "Discoverability"@en, "Vindbaarheid"@nl;
+  skos:altLabel "Data discoverability"@en, "Discovery"@en, "Ontdekbaarheid van data"@nl,
+    "Dataontdekking"@nl;
+  skos:definition "The degree to which data and metadata can be located and identified by intended users or machines through search, browsing, indexing, and links."@en,
+    "De mate waarin data en metadata door beoogde gebruikers of machines kunnen worden gevonden en geïdentificeerd via zoeken, bladeren, indexering en koppelingen."@nl;
+  skos:broader ex:fair;
+  skos:notation "DIS";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning discoverability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:persistent-identifiers a skos:Concept;
+  skos:prefLabel "Persistent identifiers"@en, "Persistente identificatoren"@nl;
+  skos:altLabel "PIDs"@en, "Persistent IDs"@en, "PID’s"@nl, "Persistente ID’s"@nl;
+  skos:definition "Globally unique and durable identifiers that provide a stable reference to a data object, person, organization, or other entity over time."@en,
+    "Wereldwijd unieke en duurzame identificatoren die in de tijd een stabiele verwijzing bieden naar een dataobject, persoon, organisatie of andere entiteit."@nl;
+  skos:broader ex:fair;
+  skos:notation "PI2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning persistent identifiers. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:researcher-identifiers a skos:Concept;
+  skos:prefLabel "Researcher identifiers"@en, "Onderzoekersidentificatoren"@nl;
+  skos:altLabel "Researcher IDs"@en, "Persistent researcher identifiers"@en, "Onderzoekers-ID’s"@nl,
+    "Persistente onderzoekersidentificatoren"@nl;
+  skos:definition "Persistent identifiers assigned to researchers to distinguish them unambiguously and connect them with affiliations, contributions, outputs, and activities."@en,
+    "Persistente identificatoren die aan onderzoekers worden toegekend om hen eenduidig te onderscheiden en te verbinden met affiliaties, bijdragen, output en activiteiten."@nl;
+  skos:broader ex:fair;
+  skos:notation "RI2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning researcher identifiers. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:intellectual-property-general a skos:Concept;
+  skos:prefLabel "Intellectual property (general)"@en, "Intellectueel eigendom (algemeen)"@nl;
+  skos:altLabel "IP"@en, "Intellectual property rights"@en, "IE"@nl, "Intellectuele-eigendomsrechten"@nl;
+  skos:definition "Legally recognized rights in creations, inventions, data-related works, databases, software, and other outputs that may affect ownership, access, licensing, and reuse."@en,
+    "Wettelijk erkende rechten op creaties, uitvindingen, datagerelateerde werken, databanken, software en andere resultaten die van invloed kunnen zijn op eigendom, toegang, licentieverlening en hergebruik."@nl;
+  skos:notation "IP";
+  skos:scopeNote "Use for general statements about intellectual property (general) and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:narrower ex:data-citation, ex:intellectual-property-e-g-forms-of-ip-such-as-patents-and-inventions;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-citation a skos:Concept;
+  skos:prefLabel "Data citation"@en, "Datacitatie"@nl;
+  skos:altLabel "Dataset citation"@en, "Citation of data"@en, "Datasetcitatie"@nl, "Citeren van data"@nl;
+  skos:definition "A formal reference to a dataset or data object that supports attribution, discovery, access, verification, and tracking of its use."@en,
+    "Een formele verwijzing naar een dataset of dataobject die attributie, vindbaarheid, toegang, verificatie en het volgen van gebruik ondersteunt."@nl;
+  skos:broader ex:intellectual-property-general;
+  skos:notation "DC2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning data citation. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:intellectual-property-e-g-forms-of-ip-such-as-patents-and-inventions a skos:Concept;
+  skos:prefLabel "Intellectual property (e.g. forms of IP such as patents and inventions)"@en,
+    "Intellectueel eigendom (bijvoorbeeld vormen van IE zoals octrooien en uitvindingen)"@nl;
+  skos:altLabel "IP rights"@en, "Patents and inventions"@en, "IE-rechten"@nl, "Octrooien en uitvindingen"@nl;
+  skos:definition "The specific forms of intellectual-property protection or claims, such as patents, copyright, database rights, trade secrets, and rights in inventions, that may apply to data-related outputs."@en,
+    "De specifieke vormen van bescherming of aanspraken op intellectueel eigendom, zoals octrooien, auteursrecht, databankenrecht, bedrijfsgeheimen en rechten op uitvindingen, die op datagerelateerde resultaten van toepassing kunnen zijn."@nl;
+  skos:broader ex:intellectual-property-general;
+  skos:notation "IP2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning intellectual property (e.g. forms of ip such as patents and inventions). Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:interoperable a skos:Concept;
+  skos:prefLabel "Interoperable"@en, "Interoperabel"@nl;
+  skos:altLabel "Interoperability-ready"@en, "Uitwisselbaar"@nl;
+  skos:definition "The condition in which data and metadata use shared languages, formats, vocabularies, identifiers, and qualified relationships so they can be integrated and used across systems and domains."@en,
+    "De toestand waarin data en metadata gedeelde talen, formaten, vocabulaires, identificatoren en gekwalificeerde relaties gebruiken, zodat zij over systemen en domeinen heen kunnen worden geïntegreerd en gebruikt."@nl;
+  skos:notation "INT";
+  skos:scopeNote "Use for general statements about interoperable and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  skos:closeMatch <https://www.go-fair.org/fair-principles/i1-metadata-use-formal-accessible-shared-broadly-applicable-language-knowledge-representation/>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:interoperability, ex:legal-interoperability, ex:organisational-interoperability,
+    ex:semantic-interoperability, ex:technical-interoperability;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:interoperability a skos:Concept;
+  skos:prefLabel "Interoperability"@en, "Interoperabiliteit"@nl;
+  skos:altLabel "Data interoperability"@en, "Data-interoperabiliteit"@nl;
+  skos:definition "The ability of organizations, processes, systems, and data to work together and exchange information while preserving its meaning and intended use."@en,
+    "Het vermogen van organisaties, processen, systemen en data om samen te werken en informatie uit te wisselen met behoud van betekenis en bedoeld gebruik."@nl;
+  skos:broader ex:interoperable;
+  skos:notation "INT2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning interoperability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:legal-interoperability a skos:Concept;
+  skos:prefLabel "Legal interoperability"@en, "Juridische interoperabiliteit"@nl;
+  skos:altLabel "Regulatory interoperability"@en, "Regelgevende interoperabiliteit"@nl;
+  skos:definition "The compatibility of legal rights, licences, restrictions, and obligations so that data from different sources can be combined and reused lawfully."@en,
+    "De verenigbaarheid van juridische rechten, licenties, beperkingen en verplichtingen, zodat data uit verschillende bronnen rechtmatig kunnen worden gecombineerd en hergebruikt."@nl;
+  skos:broader ex:interoperable;
+  skos:notation "LI";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning legal interoperability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:organisational-interoperability a skos:Concept;
+  skos:prefLabel "Organisational interoperability"@en, "Organisatorische interoperabiliteit"@nl;
+  skos:altLabel "Organizational interoperability"@en, "Institutional interoperability"@en,
+    "Institutionele interoperabiliteit"@nl;
+  skos:definition "The alignment of governance, roles, responsibilities, processes, and service arrangements that enables organizations to exchange and use data effectively."@en,
+    "De afstemming van governance, rollen, verantwoordelijkheden, processen en dienstverleningsafspraken waardoor organisaties data effectief kunnen uitwisselen en gebruiken."@nl;
+  skos:broader ex:interoperable;
+  skos:notation "OI";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning organisational interoperability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:semantic-interoperability a skos:Concept;
+  skos:prefLabel "Semantic interoperability"@en, "Semantische interoperabiliteit"@nl;
+  skos:altLabel "Meaning-level interoperability"@en, "Betekenisinteroperabiliteit"@nl;
+  skos:definition "The ability of exchanged data to retain a shared, explicit, and machine-actionable meaning through common models, vocabularies, identifiers, and mappings."@en,
+    "Het vermogen van uitgewisselde data om een gedeelde, expliciete en machine-actionable betekenis te behouden door gemeenschappelijke modellen, vocabulaires, identificatoren en mappings."@nl;
+  skos:broader ex:interoperable;
+  skos:notation "SI";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning semantic interoperability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:technical-interoperability a skos:Concept;
+  skos:prefLabel "Technical interoperability"@en, "Technische interoperabiliteit"@nl;
+  skos:altLabel "Systems interoperability"@en, "Systeeminteroperabiliteit"@nl;
+  skos:definition "The ability of systems to exchange and process data using compatible interfaces, protocols, formats, encodings, and technical standards."@en,
+    "Het vermogen van systemen om data uit te wisselen en te verwerken met behulp van compatibele interfaces, protocollen, formaten, coderingen en technische standaarden."@nl;
+  skos:broader ex:interoperable;
+  skos:notation "TI";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning technical interoperability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:repositories a skos:Concept;
+  skos:prefLabel "Repositories"@en, "Repositories"@nl;
+  skos:altLabel "Data repositories"@en, "Research data repositories"@en, "Datarepositories"@nl,
+    "Onderzoeksdatarepositories"@nl;
+  skos:definition "Managed physical or digital services that store, preserve, describe, curate, and provide continuing access to data and other materials."@en,
+    "Beheerde fysieke of digitale voorzieningen die data en andere materialen opslaan, preserveren, beschrijven en cureren en daar blijvende toegang toe bieden."@nl;
+  skos:notation "REP";
+  skos:scopeNote "Use for general statements about repositories and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  skos:closeMatch <https://vocabs.ardc.edu.au/viewById/685>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:resource-accreditation, ex:service-level-agreements, ex:sustainability;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:resource-accreditation a skos:Concept;
+  skos:prefLabel "Resource accreditation"@en, "Accreditatie van voorzieningen"@nl;
+  skos:altLabel "Repository certification"@en, "Resource certification"@en, "Repositorycertificering"@nl,
+    "Certificering van voorzieningen"@nl;
+  skos:definition "Formal recognition that a repository, service, or other resource meets specified requirements, standards, or certification criteria."@en,
+    "Formele erkenning dat een repository, dienst of andere voorziening voldoet aan vastgestelde eisen, standaarden of certificeringscriteria."@nl;
+  skos:broader ex:repositories;
+  skos:notation "RA";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning resource accreditation. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:service-level-agreements a skos:Concept;
+  skos:prefLabel "Service-level agreements"@en, "Dienstverleningsovereenkomsten (SLA’s)"@nl;
+  skos:altLabel "SLAs"@en, "Service level agreements"@en, "SLA’s"@nl, "Serviceniveau-overeenkomsten"@nl;
+  skos:definition "Documented agreements that define the services to be delivered and measurable expectations such as availability, support, security, response times, and responsibilities."@en,
+    "Gedocumenteerde overeenkomsten waarin de te leveren diensten en meetbare verwachtingen zijn vastgelegd, zoals beschikbaarheid, ondersteuning, beveiliging, responstijden en verantwoordelijkheden."@nl;
+  skos:broader ex:repositories;
+  skos:notation "SLA";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning service-level agreements. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:sustainability a skos:Concept;
+  skos:prefLabel "Sustainability"@en, "Duurzaamheid"@nl;
+  skos:altLabel "Long-term sustainability"@en, "Service sustainability"@en, "Langetermijnduurzaamheid"@nl,
+    "Duurzaamheid van dienstverlening"@nl;
+  skos:definition "The capacity of a data resource or service to remain operational, governed, funded, maintained, and usable over the period required by its community."@en,
+    "Het vermogen van een databron of dienst om gedurende de door de gemeenschap vereiste periode operationeel, bestuurd, gefinancierd, onderhouden en bruikbaar te blijven."@nl;
+  skos:broader ex:repositories;
+  skos:notation "SUS";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning sustainability. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:reusable a skos:Concept;
+  skos:prefLabel "Reusable"@en, "Herbruikbaar"@nl;
+  skos:altLabel "Reusability"@en, "Herbruikbaarheid"@nl;
+  skos:definition "The condition in which data and metadata are sufficiently described, licensed, provenance-rich, and compliant with relevant standards to support use beyond their original purpose."@en,
+    "De toestand waarin data en metadata voldoende zijn beschreven, gelicentieerd, van herkomstinformatie voorzien en in overeenstemming met relevante standaarden zijn om gebruik buiten het oorspronkelijke doel mogelijk te maken."@nl;
+  skos:notation "REU";
+  skos:scopeNote "Use for general statements about reusable and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  skos:closeMatch <https://www.go-fair.org/fair-principles/r1-meta-data-richly-described-plurality-accurate-relevant-attributes/>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:data-reuse, ex:licenses, ex:provenance;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-reuse a skos:Concept;
+  skos:prefLabel "Data reuse"@en, "Hergebruik van data"@nl;
+  skos:altLabel "Reuse of data"@en, "Secondary use of data"@en, "Datahergebruik"@nl,
+    "Secundair gebruik van data"@nl;
+  skos:definition "The analysis, combination, or application of existing data for a purpose beyond or different from the purpose for which the data were originally created."@en,
+    "Het analyseren, combineren of toepassen van bestaande data voor een doel dat verder gaat dan of verschilt van het doel waarvoor de data oorspronkelijk zijn gecreëerd."@nl;
+  skos:broader ex:reusable;
+  skos:notation "DR";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning data reuse. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:closeMatch <https://vocabs.ardc.edu.au/viewById/685>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:licenses a skos:Concept;
+  skos:prefLabel "Licenses"@en, "Licenties"@nl;
+  skos:altLabel "Data licences"@en, "Licensing terms"@en, "Datalicenties"@nl, "Licentievoorwaarden"@nl;
+  skos:definition "Standardized legal instruments that state the permissions, conditions, restrictions, and obligations governing access to and reuse of data or other works."@en,
+    "Gestandaardiseerde juridische instrumenten die de toestemmingen, voorwaarden, beperkingen en verplichtingen voor toegang tot en hergebruik van data of andere werken vastleggen."@nl;
+  skos:broader ex:reusable;
+  skos:notation "LIC";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning licenses. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:provenance a skos:Concept;
+  skos:prefLabel "Provenance"@en, "Herkomst"@nl;
+  skos:altLabel "Data provenance"@en, "Lineage"@en, "Dataherkomst"@nl, "Data lineage"@nl;
+  skos:definition "Information about the origin, custody, context, processing, transformation, and responsibility history of data or metadata."@en,
+    "Informatie over de oorsprong, het beheer, de context, verwerking, transformatie en verantwoordelijkheidsgeschiedenis van data of metadata."@nl;
+  skos:broader ex:reusable;
+  skos:notation "PRO";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning provenance. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:sensitive-data a skos:Concept;
+  skos:prefLabel "Sensitive data"@en, "Gevoelige data"@nl;
+  skos:altLabel "Restricted data"@en, "Confidential data"@en, "Beschermde data"@nl,
+    "Vertrouwelijke data"@nl;
+  skos:definition "Data that require additional protection because unauthorized access, disclosure, alteration, or misuse could harm individuals, organizations, communities, security, or legitimate interests."@en,
+    "Data die aanvullende bescherming vereisen omdat ongeoorloofde toegang, openbaarmaking, wijziging of misbruik schade kan berokkenen aan personen, organisaties, gemeenschappen, veiligheid of gerechtvaardigde belangen."@nl;
+  skos:notation "SD";
+  skos:scopeNote "Use for general statements about sensitive data and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:citizen-science, ex:gdpr, ex:sensitive-data-businesses, ex:sensitive-data-personal;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:citizen-science a skos:Concept;
+  skos:prefLabel "Citizen science"@en, "Burgerwetenschap"@nl;
+  skos:altLabel "Participatory science"@en, "Community science"@en, "Participatieve wetenschap"@nl,
+    "Burgeronderzoek"@nl;
+  skos:definition "Research in which members of the public participate in activities such as defining questions, collecting or analyzing data, interpreting results, or sharing knowledge."@en,
+    "Onderzoek waarbij leden van het publiek deelnemen aan activiteiten zoals het formuleren van vragen, verzamelen of analyseren van data, interpreteren van resultaten of delen van kennis."@nl;
+  skos:broader ex:sensitive-data;
+  skos:notation "CS";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning citizen science. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:exactMatch <http://www.wikidata.org/entity/Q1093434>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:gdpr a skos:Concept;
+  skos:prefLabel "GDPR"@en, "Algemene verordening gegevensbescherming (AVG)"@nl;
+  skos:altLabel "General Data Protection Regulation"@en, "AVG"@nl, "Europese privacyverordening"@nl;
+  skos:definition "The European Union regulation that governs the processing of personal data and establishes principles, rights, obligations, and accountability requirements for data protection."@en,
+    "De verordening van de Europese Unie die de verwerking van persoonsgegevens regelt en beginselen, rechten, verplichtingen en verantwoordingsvereisten voor gegevensbescherming vastlegt."@nl;
+  skos:broader ex:sensitive-data;
+  skos:notation "GDPR";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning gdpr. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:exactMatch <http://data.europa.eu/eli/reg/2016/679/oj>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:sensitive-data-businesses a skos:Concept;
+  skos:prefLabel "Sensitive data (businesses)"@en, "Gevoelige bedrijfsdata"@nl;
+  skos:altLabel "Commercially sensitive data"@en, "Confidential business data"@en, "Commercieel gevoelige data"@nl,
+    "Vertrouwelijke bedrijfsdata"@nl;
+  skos:definition "Commercial or organizational data whose disclosure or misuse could cause competitive, financial, contractual, security, reputational, or operational harm."@en,
+    "Commerciële of organisatorische data waarvan openbaarmaking of misbruik concurrentiële, financiële, contractuele, beveiligings-, reputatie- of operationele schade kan veroorzaken."@nl;
+  skos:broader ex:sensitive-data;
+  skos:notation "SD2";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning sensitive data (businesses). Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:sensitive-data-personal a skos:Concept;
+  skos:prefLabel "Sensitive data (personal)"@en, "Gevoelige persoonsgegevens"@nl;
+  skos:altLabel "Sensitive personal data"@en, "Personal data requiring protection"@en,
+    "Bijzondere persoonsgegevens"@nl, "Beschermde persoonsgegevens"@nl;
+  skos:definition "Information relating to an identified or identifiable person that requires protection under applicable privacy, ethical, or confidentiality requirements."@en,
+    "Informatie over een geïdentificeerde of identificeerbare persoon die bescherming vereist op grond van toepasselijke privacy-, ethische of vertrouwelijkheidsvereisten."@nl;
+  skos:broader ex:sensitive-data;
+  skos:notation "SD3";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning sensitive data (personal). Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:transparency-and-openness a skos:Concept;
+  skos:prefLabel "Transparency and openness"@en, "Transparantie en openheid"@nl;
+  skos:altLabel "Openness and transparency"@en, "Openheid en transparantie"@nl;
+  skos:definition "The principle that data-related decisions, methods, conditions, and outputs should be understandable and as openly accessible as possible while respecting legitimate restrictions."@en,
+    "Het beginsel dat datagerelateerde besluiten, methoden, voorwaarden en resultaten begrijpelijk en zo open mogelijk toegankelijk moeten zijn, met inachtneming van gerechtvaardigde beperkingen."@nl;
+  skos:notation "TO";
+  skos:scopeNote "Use for general statements about transparency and openness and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:narrower ex:data-availability-statement, ex:embargo, ex:open-access, ex:open-data,
+    ex:open-science, ex:openness, ex:transparency;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-availability-statement a skos:Concept;
+  skos:prefLabel "Data availability statement"@en, "Databeschikbaarheidsverklaring"@nl;
+  skos:altLabel "DAS"@en, "Data access statement"@en, "DAS"@nl, "Datatoegankelijkheidsverklaring"@nl;
+  skos:definition "A statement in a research output that explains whether, where, and under what conditions the supporting data and related materials can be accessed."@en,
+    "Een verklaring in een onderzoeksoutput die toelicht of, waar en onder welke voorwaarden de onderliggende data en gerelateerde materialen toegankelijk zijn."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "DAS";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning data availability statement. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:embargo a skos:Concept;
+  skos:prefLabel "Embargo"@en, "Embargo"@nl;
+  skos:altLabel "Embargo period"@en, "Restricted-access period"@en, "Embargoperiode"@nl,
+    "Periode van beperkte toegang"@nl;
+  skos:definition "A defined period during which access to deposited data is restricted, after which access is released according to the agreed conditions."@en,
+    "Een vastgestelde periode waarin de toegang tot gedeponeerde data beperkt is en waarna toegang wordt verleend volgens de overeengekomen voorwaarden."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "EMB";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning embargo. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:open-access a skos:Concept;
+  skos:prefLabel "Open access"@en, "Open toegang"@nl;
+  skos:altLabel "OA"@en, "Free access to research outputs"@en, "OA"@nl, "Vrije toegang tot onderzoeksresultaten"@nl;
+  skos:definition "The practice of providing online access to research outputs without price barriers and with rights of use stated as clearly as possible."@en,
+    "De praktijk waarbij online toegang tot onderzoeksresultaten wordt geboden zonder financiële drempels en waarbij gebruiksrechten zo duidelijk mogelijk zijn vastgelegd."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "OA";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning open access. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:open-data a skos:Concept;
+  skos:prefLabel "Open data"@en, "Open data"@nl;
+  skos:altLabel "Publicly accessible data"@en, "Vrij toegankelijke data"@nl;
+  skos:definition "Data that anyone may access, use, modify, and share for any purpose, subject at most to requirements that preserve provenance and openness."@en,
+    "Data die iedereen voor elk doel mag raadplegen, gebruiken, wijzigen en delen, hoogstens onder voorwaarden die herkomst en openheid behouden."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "OD";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning open data. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:exactMatch <http://www.wikidata.org/entity/Q309901>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:open-science a skos:Concept;
+  skos:prefLabel "Open science"@en, "Open wetenschap"@nl;
+  skos:altLabel "Open research"@en, "Open onderzoek"@nl;
+  skos:definition "An approach to research that makes knowledge, methods, data, software, publications, and participation as openly available and collaborative as possible."@en,
+    "Een onderzoeksbenadering die kennis, methoden, data, software, publicaties en deelname zo open en samenwerkingsgericht mogelijk beschikbaar maakt."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "OS";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning open science. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  skos:exactMatch <http://www.wikidata.org/entity/Q232932>;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:openness a skos:Concept;
+  skos:prefLabel "Openness"@en, "Openheid"@nl;
+  skos:altLabel "Open practices"@en, "Open werkwijzen"@nl;
+  skos:definition "The degree to which data, methods, decisions, and outputs are accessible, understandable, and reusable with minimal unnecessary restriction."@en,
+    "De mate waarin data, methoden, besluiten en resultaten toegankelijk, begrijpelijk en herbruikbaar zijn met zo min mogelijk onnodige beperkingen."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "OPE";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning openness. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://codata.org/initiatives/data-science-and-stewardship/rdm-terminology-wg/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:transparency a skos:Concept;
+  skos:prefLabel "Transparency"@en, "Transparantie"@nl;
+  skos:altLabel "Data transparency"@en, "Openness of process"@en, "Datatransparantie"@nl,
+    "Openheid van processen"@nl;
+  skos:definition "The quality of making data-related methods, decisions, responsibilities, sources, limitations, and conditions sufficiently visible and understandable for scrutiny and accountability."@en,
+    "De eigenschap dat datagerelateerde methoden, besluiten, verantwoordelijkheden, bronnen, beperkingen en voorwaarden voldoende zichtbaar en begrijpelijk zijn voor toetsing en verantwoording."@nl;
+  skos:broader ex:transparency-and-openness;
+  skos:notation "TRA";
+  skos:scopeNote "Use for policies, requirements or practices specifically concerning transparency. Use the broader concept for statements that do not distinguish this specific aspect."@en;
+  dct:source <https://www.dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/>;
+  skos:inScheme <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:data-policy skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+<https://fredbrug.github.io/skohub-pages/pfdp> skos:hasTopConcept ex:data-security,
+    ex:fair, ex:intellectual-property-general, ex:interoperable, ex:repositories, ex:reusable,
+    ex:sensitive-data, ex:transparency-and-openness .
+
+ex:data-security skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:fair skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:intellectual-property-general skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:interoperable skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:repositories skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:reusable skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:sensitive-data skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
+
+ex:transparency-and-openness skos:topConceptOf <https://fredbrug.github.io/skohub-pages/pfdp> .
