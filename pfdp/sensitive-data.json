@@ -1,0 +1,232 @@
+{
+  "id": "https://fredbrug.github.io/skohub-pages/pfdp/sensitive-data",
+  "type": "Concept",
+  "prefLabel": {
+    "en": "Sensitive data",
+    "nl": "Gevoelige data"
+  },
+  "altLabel": {
+    "en": [
+      "Restricted data",
+      "Confidential data"
+    ],
+    "nl": [
+      "Beschermde data",
+      "Vertrouwelijke data"
+    ]
+  },
+  "definition": {
+    "en": "Data that require additional protection because unauthorized access, disclosure, alteration, or misuse could harm individuals, organizations, communities, security, or legitimate interests.",
+    "nl": "Data die aanvullende bescherming vereisen omdat ongeoorloofde toegang, openbaarmaking, wijziging of misbruik schade kan berokkenen aan personen, organisaties, gemeenschappen, veiligheid of gerechtvaardigde belangen."
+  },
+  "scopeNote": {
+    "en": [
+      "Use for general statements about sensitive data and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."
+    ]
+  },
+  "notation": [
+    "SD"
+  ],
+  "narrower": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/citizen-science",
+      "prefLabel": {
+        "en": "Citizen science",
+        "nl": "Burgerwetenschap"
+      }
+    },
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/gdpr",
+      "prefLabel": {
+        "en": "GDPR",
+        "nl": "Algemene verordening gegevensbescherming (AVG)"
+      }
+    },
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/sensitive-data-businesses",
+      "prefLabel": {
+        "en": "Sensitive data (businesses)",
+        "nl": "Gevoelige bedrijfsdata"
+      }
+    },
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/sensitive-data-personal",
+      "prefLabel": {
+        "en": "Sensitive data (personal)",
+        "nl": "Gevoelige persoonsgegevens"
+      }
+    }
+  ],
+  "inScheme": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp",
+      "title": {
+        "en": "PARC FAIR Data Policy",
+        "nl": "PARC FAIR Data Policy"
+      }
+    }
+  ],
+  "inSchemeAll": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp"
+    }
+  ],
+  "topConceptOf": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp",
+      "title": {
+        "en": "PARC FAIR Data Policy",
+        "nl": "PARC FAIR Data Policy"
+      }
+    }
+  ],
+  "@context": {
+    "@version": 1.1,
+    "id": "@id",
+    "type": "@type",
+    "@vocab": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dct": "http://purl.org/dc/terms/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "schema": "https://schema.org/",
+    "vann": "http://purl.org/vocab/vann/",
+    "ldp": "http://www.w3.org/ns/ldp#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "title": {
+      "@id": "dct:title",
+      "@container": "@language"
+    },
+    "dc:title": {
+      "@id": "dc:title",
+      "@container": "@language"
+    },
+    "dc:description": {
+      "@id": "dc:description",
+      "@container": "@language"
+    },
+    "description": {
+      "@id": "dct:description",
+      "@container": "@language"
+    },
+    "license": {
+      "@id": "dct:license",
+      "@container": "@language"
+    },
+    "issued": {
+      "@id": "dct:issued",
+      "@type": "xsd:date"
+    },
+    "created": {
+      "@id": "dct:created",
+      "@type": "xsd:date"
+    },
+    "modified": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "creator": "dct:creator",
+    "publisher": "dct:publisher",
+    "preferredNamespacePrefix": "vann:preferredNamespacePrefix",
+    "preferredNamespaceUri": "vann:preferredNamespaceUri",
+    "isBasedOn": "schema:isBasedOn",
+    "source": "dct:source",
+    "prefLabel": {
+      "@container": "@language"
+    },
+    "altLabel": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "hiddenLabel": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "definition": {
+      "@container": "@language"
+    },
+    "note": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "changeNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "editorialNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "historyNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "scopeNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "notation": {
+      "@container": "@set"
+    },
+    "example": {
+      "@container": "@language"
+    },
+    "narrower": {
+      "@container": "@set"
+    },
+    "related": {
+      "@container": "@set"
+    },
+    "relatedMatch": {
+      "@container": "@set"
+    },
+    "narrowerTransitive": {
+      "@container": "@set"
+    },
+    "broaderTransitive": {
+      "@container": "@set"
+    },
+    "broadMatch": {
+      "@container": "@set"
+    },
+    "narrowMatch": {
+      "@container": "@set"
+    },
+    "closeMatch": {
+      "@container": "@set"
+    },
+    "exactMatch": {
+      "@container": "@set"
+    },
+    "hasTopConcept": {
+      "@container": "@set"
+    },
+    "inScheme": {
+      "@container": "@set"
+    },
+    "topConceptOf": {
+      "@container": "@set"
+    },
+    "deprecated": {
+      "@id": "owl:deprecated",
+      "@type": "xsd:boolean"
+    },
+    "isReplacedBy": {
+      "@id": "dct:isReplacedBy",
+      "@container": "@set"
+    }
+  }
+}

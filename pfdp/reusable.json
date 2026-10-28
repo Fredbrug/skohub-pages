@@ -1,0 +1,228 @@
+{
+  "id": "https://fredbrug.github.io/skohub-pages/pfdp/reusable",
+  "type": "Concept",
+  "prefLabel": {
+    "en": "Reusable",
+    "nl": "Herbruikbaar"
+  },
+  "altLabel": {
+    "en": [
+      "Reusability"
+    ],
+    "nl": [
+      "Herbruikbaarheid"
+    ]
+  },
+  "definition": {
+    "en": "The condition in which data and metadata are sufficiently described, licensed, provenance-rich, and compliant with relevant standards to support use beyond their original purpose.",
+    "nl": "De toestand waarin data en metadata voldoende zijn beschreven, gelicentieerd, van herkomstinformatie voorzien en in overeenstemming met relevante standaarden zijn om gebruik buiten het oorspronkelijke doel mogelijk te maken."
+  },
+  "scopeNote": {
+    "en": [
+      "Use for general statements about reusable and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."
+    ]
+  },
+  "notation": [
+    "REU"
+  ],
+  "narrower": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/data-reuse",
+      "prefLabel": {
+        "en": "Data reuse",
+        "nl": "Hergebruik van data"
+      }
+    },
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/licenses",
+      "prefLabel": {
+        "en": "Licenses",
+        "nl": "Licenties"
+      }
+    },
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/provenance",
+      "prefLabel": {
+        "en": "Provenance",
+        "nl": "Herkomst"
+      }
+    }
+  ],
+  "closeMatch": [
+    {
+      "id": "https://www.go-fair.org/fair-principles/r1-meta-data-richly-described-plurality-accurate-relevant-attributes/"
+    }
+  ],
+  "inScheme": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp",
+      "title": {
+        "en": "PARC FAIR Data Policy",
+        "nl": "PARC FAIR Data Policy"
+      }
+    }
+  ],
+  "inSchemeAll": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp"
+    }
+  ],
+  "topConceptOf": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp",
+      "title": {
+        "en": "PARC FAIR Data Policy",
+        "nl": "PARC FAIR Data Policy"
+      }
+    }
+  ],
+  "@context": {
+    "@version": 1.1,
+    "id": "@id",
+    "type": "@type",
+    "@vocab": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dct": "http://purl.org/dc/terms/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "schema": "https://schema.org/",
+    "vann": "http://purl.org/vocab/vann/",
+    "ldp": "http://www.w3.org/ns/ldp#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "title": {
+      "@id": "dct:title",
+      "@container": "@language"
+    },
+    "dc:title": {
+      "@id": "dc:title",
+      "@container": "@language"
+    },
+    "dc:description": {
+      "@id": "dc:description",
+      "@container": "@language"
+    },
+    "description": {
+      "@id": "dct:description",
+      "@container": "@language"
+    },
+    "license": {
+      "@id": "dct:license",
+      "@container": "@language"
+    },
+    "issued": {
+      "@id": "dct:issued",
+      "@type": "xsd:date"
+    },
+    "created": {
+      "@id": "dct:created",
+      "@type": "xsd:date"
+    },
+    "modified": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "creator": "dct:creator",
+    "publisher": "dct:publisher",
+    "preferredNamespacePrefix": "vann:preferredNamespacePrefix",
+    "preferredNamespaceUri": "vann:preferredNamespaceUri",
+    "isBasedOn": "schema:isBasedOn",
+    "source": "dct:source",
+    "prefLabel": {
+      "@container": "@language"
+    },
+    "altLabel": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "hiddenLabel": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "definition": {
+      "@container": "@language"
+    },
+    "note": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "changeNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "editorialNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "historyNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "scopeNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "notation": {
+      "@container": "@set"
+    },
+    "example": {
+      "@container": "@language"
+    },
+    "narrower": {
+      "@container": "@set"
+    },
+    "related": {
+      "@container": "@set"
+    },
+    "relatedMatch": {
+      "@container": "@set"
+    },
+    "narrowerTransitive": {
+      "@container": "@set"
+    },
+    "broaderTransitive": {
+      "@container": "@set"
+    },
+    "broadMatch": {
+      "@container": "@set"
+    },
+    "narrowMatch": {
+      "@container": "@set"
+    },
+    "closeMatch": {
+      "@container": "@set"
+    },
+    "exactMatch": {
+      "@container": "@set"
+    },
+    "hasTopConcept": {
+      "@container": "@set"
+    },
+    "inScheme": {
+      "@container": "@set"
+    },
+    "topConceptOf": {
+      "@container": "@set"
+    },
+    "deprecated": {
+      "@id": "owl:deprecated",
+      "@type": "xsd:boolean"
+    },
+    "isReplacedBy": {
+      "@id": "dct:isReplacedBy",
+      "@container": "@set"
+    }
+  }
+}

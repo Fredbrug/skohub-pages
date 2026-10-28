@@ -1,0 +1,211 @@
+{
+  "id": "https://fredbrug.github.io/skohub-pages/pfdp/applicable-laws-and-regulations-general",
+  "type": "Concept",
+  "prefLabel": {
+    "en": "Applicable laws and regulations (general)",
+    "nl": "Toepasselijke wet- en regelgeving (algemeen)"
+  },
+  "altLabel": {
+    "en": [
+      "Legal and regulatory requirements",
+      "Regulatory compliance"
+    ],
+    "nl": [
+      "Wettelijke en regelgevende vereisten",
+      "Naleving van wet- en regelgeving"
+    ]
+  },
+  "definition": {
+    "en": "The body of binding legal, regulatory, contractual, funder, institutional, and policy requirements that governs how data may be collected, managed, shared, retained, and disposed of.",
+    "nl": "Het geheel van bindende wettelijke, regelgevende, contractuele, financierings-, institutionele en beleidsvereisten dat bepaalt hoe data mogen worden verzameld, beheerd, gedeeld, bewaard en verwijderd."
+  },
+  "scopeNote": {
+    "en": [
+      "Use for general statements about applicable laws and regulations (general) and for grouping the more specific concepts listed beneath it. Prefer a narrower concept when the statement is more specific."
+    ]
+  },
+  "notation": [
+    "ALR"
+  ],
+  "narrower": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp/applicable-laws-and-regulations-laws-contracts-funder-requirements-policies-guidelines-com",
+      "prefLabel": {
+        "en": "Applicable laws and regulations (laws, contracts, funder requirements, policies, guidelines, combined/aligned with the EU Common Open Data Platform, ECHA, Horizon Europe, OECD, Science Europe)",
+        "nl": "Toepasselijke wet- en regelgeving (wetten, contracten, eisen van financiers, beleid en richtlijnen, gecombineerd met of afgestemd op het gemeenschappelijke opendataplatform van de EU, ECHA, Horizon Europe, OESO en Science Europe)"
+      }
+    }
+  ],
+  "inScheme": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp",
+      "title": {
+        "en": "PARC FAIR Data Policy",
+        "nl": "PARC FAIR Data Policy"
+      }
+    }
+  ],
+  "inSchemeAll": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp"
+    }
+  ],
+  "topConceptOf": [
+    {
+      "id": "https://fredbrug.github.io/skohub-pages/pfdp",
+      "title": {
+        "en": "PARC FAIR Data Policy",
+        "nl": "PARC FAIR Data Policy"
+      }
+    }
+  ],
+  "@context": {
+    "@version": 1.1,
+    "id": "@id",
+    "type": "@type",
+    "@vocab": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dct": "http://purl.org/dc/terms/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "schema": "https://schema.org/",
+    "vann": "http://purl.org/vocab/vann/",
+    "ldp": "http://www.w3.org/ns/ldp#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "title": {
+      "@id": "dct:title",
+      "@container": "@language"
+    },
+    "dc:title": {
+      "@id": "dc:title",
+      "@container": "@language"
+    },
+    "dc:description": {
+      "@id": "dc:description",
+      "@container": "@language"
+    },
+    "description": {
+      "@id": "dct:description",
+      "@container": "@language"
+    },
+    "license": {
+      "@id": "dct:license",
+      "@container": "@language"
+    },
+    "issued": {
+      "@id": "dct:issued",
+      "@type": "xsd:date"
+    },
+    "created": {
+      "@id": "dct:created",
+      "@type": "xsd:date"
+    },
+    "modified": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "creator": "dct:creator",
+    "publisher": "dct:publisher",
+    "preferredNamespacePrefix": "vann:preferredNamespacePrefix",
+    "preferredNamespaceUri": "vann:preferredNamespaceUri",
+    "isBasedOn": "schema:isBasedOn",
+    "source": "dct:source",
+    "prefLabel": {
+      "@container": "@language"
+    },
+    "altLabel": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "hiddenLabel": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "definition": {
+      "@container": "@language"
+    },
+    "note": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "changeNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "editorialNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "historyNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "scopeNote": {
+      "@container": [
+        "@language",
+        "@set"
+      ]
+    },
+    "notation": {
+      "@container": "@set"
+    },
+    "example": {
+      "@container": "@language"
+    },
+    "narrower": {
+      "@container": "@set"
+    },
+    "related": {
+      "@container": "@set"
+    },
+    "relatedMatch": {
+      "@container": "@set"
+    },
+    "narrowerTransitive": {
+      "@container": "@set"
+    },
+    "broaderTransitive": {
+      "@container": "@set"
+    },
+    "broadMatch": {
+      "@container": "@set"
+    },
+    "narrowMatch": {
+      "@container": "@set"
+    },
+    "closeMatch": {
+      "@container": "@set"
+    },
+    "exactMatch": {
+      "@container": "@set"
+    },
+    "hasTopConcept": {
+      "@container": "@set"
+    },
+    "inScheme": {
+      "@container": "@set"
+    },
+    "topConceptOf": {
+      "@container": "@set"
+    },
+    "deprecated": {
+      "@id": "owl:deprecated",
+      "@type": "xsd:boolean"
+    },
+    "isReplacedBy": {
+      "@id": "dct:isReplacedBy",
+      "@container": "@set"
+    }
+  }
+}
